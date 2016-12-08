@@ -2,6 +2,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NavbarComponent }   from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
@@ -11,36 +12,36 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    // component: DashboardComponent
+    component: HomeComponent
   },
-  {
-    path: 'about',
-    // component: HeroDetailComponent
-  },
-  {
-    path: 'contact',
-    // component: HeroesComponent
-  },
-  {
-    path: 'event',
-    // component: HeroesComponent
-  },
-  {
-    path: 'forum',
-    // component: HeroesComponent
-  },
-  {
-    path: 'register',
-    // component: HeroesComponent
-  },
-  {
-    path: 'login',
-    // component: HeroesComponent
-  },
-  {
-    path: 'contact',
-    // component: HeroesComponent
-  }
+  // {
+  //   path: 'about',
+  //   // component: HeroDetailComponent
+  // },
+  // {
+  //   path: 'contact',
+  //   // component: HeroesComponent
+  // },
+  // {
+  //   path: 'event',
+  //   // component: HeroesComponent
+  // },
+  // {
+  //   path: 'forum',
+  //   // component: HeroesComponent
+  // },
+  // {
+  //   path: 'register',
+  //   // component: HeroesComponent
+  // },
+  // {
+  //   path: 'login',
+  //   // component: HeroesComponent
+  // },
+  // {
+  //   path: 'contact',
+  //   // component: HeroesComponent
+  // }
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ header .title{
 
 header .background{
   position: absolute;
+  background-repeat: no-repeat;
   height: 100%;
   width: 100%;
   top: 0;
