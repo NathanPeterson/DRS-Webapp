@@ -7,6 +7,9 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HeaderParallaxComponent } from './header-parallax/header-parallax.component';
 
+import {AngularFireModule} from 'angularfire2';
+import { firebaseConfig } from './../environments/firebase.config';
+
 import { ng2Parallax  } from '../../node_modules/ang2-parallax/ng2parallax';
 
 import { HeaderComponent } from './header/header.component';
@@ -32,7 +35,8 @@ import { RegisterComponent } from './register/register.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

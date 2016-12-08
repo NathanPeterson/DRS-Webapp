@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NavbarComponent }   from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -30,10 +31,10 @@ const routes: Routes = [
   //   path: 'forum',
   //   // component: HeroesComponent
   // },
-  // {
-  //   path: 'register',
-  //   // component: HeroesComponent
-  // },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
   // {
   //   path: 'login',
   //   // component: HeroesComponent
