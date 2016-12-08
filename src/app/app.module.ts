@@ -9,6 +9,7 @@ import { HeaderParallaxComponent } from './header-parallax/header-parallax.compo
 import { ng2Parallax  } from '../../node_modules/ang2-parallax/ng2parallax';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     HeaderParallaxComponent,
     ng2Parallax,
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
