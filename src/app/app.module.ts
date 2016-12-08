@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 
 import { AppRoutingModule }     from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
