@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ParallaxComponent } from './parallax.component';
+import { HeaderParallaxComponent } from './header-parallax.component';
 
-describe('ParallaxComponent', () => {
-  let component: ParallaxComponent;
-  let fixture: ComponentFixture<ParallaxComponent>;
+describe('HeaderParallaxComponent', () => {
+  let component: HeaderParallaxComponent;
+  let fixture: ComponentFixture<HeaderParallaxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ParallaxComponent ]
+      declarations: [ HeaderParallaxComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ParallaxComponent);
+    fixture = TestBed.createComponent(HeaderParallaxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,10 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { HeaderParallaxComponent } from './header-parallax/header-parallax.component';
+
+import { ng2Parallax  } from '../../node_modules/ang2-parallax/ng2parallax';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderParallaxComponent,
+    ng2Parallax
   ],
   imports: [
     BrowserModule,
