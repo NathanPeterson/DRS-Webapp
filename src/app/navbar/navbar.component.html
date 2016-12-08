@@ -1,3 +1,40 @@
-<p>
-  navbar works!
-</p>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#"><img class="navbar-brand" src="../../assets/logo.jpg"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a href="#about" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#about/about">About</a></li>
+            <li><a href="#about/history">History</a></li>
+            <li><a href="#about/past-symposia">Past Symposia</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#contact" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Learn More</a></li>
+            <li><a href="#">Social Media</a></li>
+            <li><a href="#">Organizers</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Event</a></li>
+        <li><a href="#">Forums</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="../navbar-static-top/">Login</a></li>
+        <li><a href="./">Register</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
