@@ -28,8 +28,25 @@
 
 
 /*TIME LINE*/
+
+.timeline img{
+  height: 125px;
+  width: 150px;
+  float: left;
+  padding-right: 25px;
+}
+
+.timeline h4{
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+.timeline p{
+  padding-top: 10px;
+}
+
 .timeline ul {
   padding: 50px 0;
+  color: #000000;
 }
 
 .timeline ul li {
@@ -92,8 +109,9 @@
 
 time {
   display: block;
-  font-size: 1.2rem;
+  font-size: 26px;
   font-weight: bold;
+  color: #000000;
   margin-bottom: 8px;
 }
 
