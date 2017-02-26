@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { HeaderParallaxComponent } from './header-parallax/header-parallax.component';
 
 import {AngularFireModule} from 'angularfire2';
+import { AuthProviders, AuthMethods } from 'angularfire2';
+
 import { firebaseConfig } from './../environments/firebase.config';
 
 import { ng2Parallax  } from '../../node_modules/ang2-parallax/ng2parallax';
@@ -21,6 +23,11 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
+
+const authConfig = {
+    provider: AuthProviders.Password,
+    method: AuthMethods.Password
+};
 
 @NgModule({
   declarations: [
@@ -40,7 +47,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, authConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
