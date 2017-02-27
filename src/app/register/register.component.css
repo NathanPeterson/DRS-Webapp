@@ -1,0 +1,12 @@
+.form-control{
+  width: 500px
+}
+
+.requiredInfo{
+  background-color: grey;
+  padding: 20px;
+}
+
+.fullname{
+  background-color: pink;
+}

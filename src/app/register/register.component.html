@@ -7,22 +7,47 @@
   (ngSubmit)="submit(form.value)">
 
   <ul>
-    <li>
-      <div class="form-group">
+    <div class="requiredInfo">
+      <h4>Required Info</h4>
+      <li>
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="Email" formControlName = "email" />
-      </div>
-    </li>
-    <li>
-      <div class="form-group">
+      </li>
+      <li>
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Password" formControlName = "password" />
+      </li>
+      <li>
+        <label for="name">Username</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Username" formControlName ="username">
+      </li>
+    </div>
+
+    <div class="userInfo">
+      <h4>User Info</h4>
+      <div class="fullname">
+        <li>
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" name="firstname" id="fname" placeholder="First Name" formControlName ="fname">
+        </li>
+        <li>
+          <label for="">Middle Initial</label>
+          <input type="text" class="form-control" name="mi" id="mi" placeholder="Middle Initial" formControlName ="mi">
+        </li>
+        <li>
+          <label for="">Last Name</label>
+          <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" formControlName ="lname">
+        </li>
       </div>
-    </li>
-    <li>
-      <label for="name">Name</label>
-      <input type="text" class="form-control" name="name" id="name" placeholder="First Name" formControlName ="name">
-    </li>
+
+      <div class="school">
+        <li>
+          <label for="university">University</label>
+        </li>
+      </div>
+
+    </div>
+
   </ul>
 
   <br>

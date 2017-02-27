@@ -30,7 +30,11 @@ export class RegisterComponent implements OnInit {
     this.form = new FormGroup({
       email: new FormControl(''),
       password: new FormControl(''),
-      name: new FormControl('')
+      username: new FormControl(''),
+
+      fname: new FormControl(''),
+      mi: new FormControl(''),
+      lname: new FormControl(''),
     });
   }
 
@@ -40,14 +44,17 @@ export class RegisterComponent implements OnInit {
     this.af.auth.createUser(this.model).then((success) =>{
         console.log(data);
         this.currentUser = this.authState.uid;
-        // this.af.auth.subscribe((info) => {
-        //   this.currentUser = info.uid;
-        // })
     }).then(() =>
       this.item.push({
         uid: this.currentUser,
-        name: data.name,
-        email: data.email
+        username: data.username,
+        email: data.email,
+
+        firstName: data.fname,
+        mi: data.mi,
+        lastName: data.lname,
+
+
       })
     ).catch((err) => {
         alert(err);
