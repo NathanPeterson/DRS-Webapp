@@ -43,6 +43,10 @@
       <div class="school">
         <li>
           <label for="university">University</label>
+          <select name="univ" id="univ" formControlName ="univ">
+            <option value="" disabled selected>Select your Institution</option>
+            <option *ngFor="let institution of institutions" value="{{institution.institution}}">{{institution.institution}}</option>
+          </select>
         </li>
       </div>
 

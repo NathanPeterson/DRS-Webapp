@@ -24,6 +24,8 @@ import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 
+import { InstitutionService } from './services/institution.service'
+
 const authConfig = {
     provider: AuthProviders.Password,
     method: AuthMethods.Password
@@ -50,7 +52,9 @@ const authConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
   ],
-  providers: [],
+  providers: [
+    InstitutionService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
