@@ -27,6 +27,8 @@ import { LoginComponent } from './login/login.component';
 import { InstitutionService } from './services/institution.service'
 import { StatesService } from './services/states.service'
 
+import { CarouselModule } from 'ng2-bootstrap';
+
 const authConfig = {
     provider: AuthProviders.Password,
     method: AuthMethods.Password
@@ -52,6 +54,7 @@ const authConfig = {
     HttpModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
+    CarouselModule.forRoot(),
   ],
   providers: [
     InstitutionService,
