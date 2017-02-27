@@ -25,6 +25,7 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 
 import { InstitutionService } from './services/institution.service'
+import { StatesService } from './services/states.service'
 
 const authConfig = {
     provider: AuthProviders.Password,
@@ -54,6 +55,7 @@ const authConfig = {
   ],
   providers: [
     InstitutionService,
+    StatesService,
   ],
   bootstrap: [AppComponent]
 })

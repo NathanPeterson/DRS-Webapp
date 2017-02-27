@@ -3,7 +3,8 @@ import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Validators, FormBuilder } from '@angular/forms';
-import { InstitutionService } from '../services/institution.service'
+import { InstitutionService } from '../services/institution.service';
+import { StatesService } from '../services/states.service';
 
 @Component({
   selector: 'app-register',
@@ -16,17 +17,20 @@ export class RegisterComponent implements OnInit {
    form;
    currentUser;
    institutions;
+   states;
    item: FirebaseListObservable<any>;
 
   constructor(public af: AngularFire,
               private formBuilder: FormBuilder,
-              private institutionService: InstitutionService) {
+              private institutionService: InstitutionService,
+              private statesService: StatesService) {
     this.model = { email: "", password: "" };
     this.item = af.database.list('/users/');
     this.af.auth.subscribe((auth) => {
      this.authState = auth;
     });
     this.institutions = this.institutionService.get();
+    this.states = this.statesService.get();
   }
 
   ngOnInit() {
@@ -43,7 +47,7 @@ export class RegisterComponent implements OnInit {
       pnum: this.formBuilder.control(''),
       address: this.formBuilder.control(''),
       city: this.formBuilder.control(''),
-      state: this.formBuilder.control(''),
+      state: this.formBuilder.control('IN'),
       zipcode: this.formBuilder.control(''),
 
 

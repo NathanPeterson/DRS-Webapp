@@ -58,8 +58,10 @@
           <input type="text" class="form-control" name="city" id="city" placeholder="City" formControlName ="city">
         </li>
         <li>
-          <label for="state">State</label>
-          <input type="text" class="form-control" name="state" id="state" placeholder="State" formControlName ="state">
+          <label for="states">State</label>
+          <select name="state" id="state" formControlName ="state">
+            <option *ngFor="let state of states" value="{{state.abbreviation}}">{{state.abbreviation}}</option>
+          </select>
         </li>
         <li>
           <label for="zipcode">Zipcode</label>
