@@ -25,28 +25,69 @@
 
     <div class="userInfo">
       <h4>User Info</h4>
+
       <div class="fullname">
         <li>
           <label for="firstName">First Name</label>
           <input type="text" class="form-control" name="firstname" id="fname" placeholder="First Name" formControlName ="fname">
         </li>
         <li>
-          <label for="">Middle Initial</label>
+          <label for="mi">Middle Initial</label>
           <input type="text" class="form-control" name="mi" id="mi" placeholder="Middle Initial" formControlName ="mi">
         </li>
         <li>
-          <label for="">Last Name</label>
+          <label for="lname">Last Name</label>
           <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" formControlName ="lname">
         </li>
       </div>
 
+
+      <li>
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" class="form-control" name="pnum" id="pnum" placeholder="(###) ### - ####" formControlName ="pnum">
+      </li>
+
+      <div class="address">
+        <h4>Address</h4>
+        <li>
+          <label for="address">Address</label>
+          <input type="text" class="form-control" name="address" id="address" placeholder="Address" formControlName ="address">
+        </li>
+        <li>
+          <label for="city">City</label>
+          <input type="text" class="form-control" name="city" id="city" placeholder="City" formControlName ="city">
+        </li>
+        <li>
+          <label for="state">State</label>
+          <input type="text" class="form-control" name="state" id="state" placeholder="State" formControlName ="state">
+        </li>
+        <li>
+          <label for="zipcode">Zipcode</label>
+          <input type="text" class="form-control" name="zipcode" id="zipcode" placeholder="Zipcode" formControlName ="zipcode">
+        </li>
+      </div>
+
+
       <div class="school">
+        <h4>School Information</h4>
         <li>
           <label for="university">University</label>
           <select name="univ" id="univ" formControlName ="univ">
             <option value="" disabled selected>Select your Institution</option>
             <option *ngFor="let institution of institutions" value="{{institution.institution}}">{{institution.institution}}</option>
           </select>
+        </li>
+        <li>
+          <label for="department">Department</label>
+          <input type="text" class="form-control" name="department" id="department" placeholder="department" formControlName ="department">
+        </li>
+        <li>
+          <label for="discipline">Discipline</label>
+          <input type="text" class="form-control" name="discipline" id="discipline" placeholder="discipline" formControlName ="discipline">
+        </li>
+        <li>
+          <label for="subdiscipline">Subdiscipline</label>
+          <input type="text" class="form-control" name="subdiscipline" id="subdiscipline" placeholder="subdiscipline" formControlName ="subdiscipline">
         </li>
       </div>
 

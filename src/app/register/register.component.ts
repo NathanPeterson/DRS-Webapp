@@ -40,7 +40,17 @@ export class RegisterComponent implements OnInit {
       mi: this.formBuilder.control(''),
       lname: this.formBuilder.control(''),
 
+      pnum: this.formBuilder.control(''),
+      address: this.formBuilder.control(''),
+      city: this.formBuilder.control(''),
+      state: this.formBuilder.control(''),
+      zipcode: this.formBuilder.control(''),
+
+
       univ: this.formBuilder.control(''),
+      department: this.formBuilder.control(''),
+      discipline: this.formBuilder.control(''),
+      subdiscipline: this.formBuilder.control(''),
     });
   }
 
@@ -60,7 +70,16 @@ export class RegisterComponent implements OnInit {
         mi: data.mi,
         lastName: data.lname,
 
+        phoneNumber: data.pnum,
+        address: data.address,
+        city: data.city,
+        state: data.state,
+        zipcode: data.zipcode,
+
         university: data.univ,
+        department: data.department,
+        discipline: data.discipline,
+        subdiscipline: data.subdiscipline,
 
       })
     ).catch((err) => {
