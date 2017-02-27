@@ -19,7 +19,7 @@ export class HomeComponent{
     $(document).ready(function(){
       $('.my-countdown').countdown({
         until:$.countdown.UTCDate(
-          -5,2017,2,28,12,0,0
+          -5,2017,2,28,18,0,0
         )
       });
     });
