@@ -7,8 +7,10 @@
   (ngSubmit)="submit(form.value)">
 
   <ul>
-    <div class="requiredInfo">
+    <div class="required">
       <h4>Required Info</h4>
+
+      <div class="requiredInfo">
       <li>
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="Email" formControlName = "email" />
@@ -22,9 +24,10 @@
         <input type="text" class="form-control" name="username" id="username" placeholder="Username" formControlName ="username">
       </li>
     </div>
+    </div>
 
     <div class="userInfo">
-      <h4>User Info</h4>
+      <h4>User Information</h4>
 
       <div class="fullname">
         <li>
@@ -42,13 +45,9 @@
       </div>
 
 
-      <li>
-        <label for="phoneNumber">Phone Number</label>
-        <input type="text" class="form-control" name="pnum" id="pnum" placeholder="(###) ### - ####" formControlName ="pnum">
-      </li>
 
       <div class="address">
-        <h4>Address</h4>
+        <h4>Address Information</h4>
         <li>
           <label for="address">Address</label>
           <input type="text" class="form-control" name="address" id="address" placeholder="Address" formControlName ="address">
@@ -93,6 +92,37 @@
         </li>
       </div>
 
+    </div>
+
+    <div class="additional">
+      <h4>Additional Information</h4>
+      <li>
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" class="form-control" name="pnum" id="pnum" placeholder="(###) ### - ####" formControlName ="pnum">
+      </li>
+
+      <li>
+        <p><label for="special">Do you need special considerations?</label>
+        Yes
+        <input type="radio" formControlName ="special"  [value]="true" (click)="onSpecialYes()">
+        No
+        <input type="radio" formControlName ="special"  [value]="false" (click)="onSpecialNo()">
+        </p>
+        <div [hidden]="!special">
+          <h1>Special Considerations Form</h1>
+        </div>
+      </li>
+      <li>
+        <p><label for="restrictions">Do you have any Dietary Restriction?</label>
+        Yes
+        <input type="radio" formControlName ="diet"  [value]="true" (click)="onDietYes()">
+        No
+        <input type="radio" formControlName ="diet"  [value]="false" (click)="onDietNo()">
+        </p>
+        <div [hidden]="!dietRestriction">
+          <h1>Diet Restrictions Form</h1>
+        </div>
+      </li>
     </div>
 
   </ul>

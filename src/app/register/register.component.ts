@@ -12,13 +12,28 @@ import { StatesService } from '../services/states.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-   model;
-   authState;
-   form;
-   currentUser;
-   institutions;
-   states;
-   item: FirebaseListObservable<any>;
+  item: FirebaseListObservable<any>;
+  model;
+  authState;
+  form;
+  currentUser;
+  institutions;
+  states;
+  special = false;
+  onSpecialYes() {
+   this.special =true;
+  }
+  onSpecialNo() {
+   this.special =false;
+  }
+  dietRestriction = false;
+  onDietYes() {
+   this.dietRestriction =true;
+  }
+  onDietNo() {
+   this.dietRestriction =false;
+  }
+
 
   constructor(public af: AngularFire,
               private formBuilder: FormBuilder,
@@ -55,6 +70,9 @@ export class RegisterComponent implements OnInit {
       department: this.formBuilder.control(''),
       discipline: this.formBuilder.control(''),
       subdiscipline: this.formBuilder.control(''),
+
+      special: this.formBuilder.control('false'),
+      diet: this.formBuilder.control('false'),
     });
   }
 
@@ -84,6 +102,9 @@ export class RegisterComponent implements OnInit {
         department: data.department,
         discipline: data.discipline,
         subdiscipline: data.subdiscipline,
+
+        special: data.special,
+        diet: data.special,
 
       })
     ).catch((err) => {
