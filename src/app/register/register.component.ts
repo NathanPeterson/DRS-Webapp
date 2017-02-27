@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -16,25 +16,23 @@ export class RegisterComponent implements OnInit {
    currentUser;
    item: FirebaseListObservable<any>;
 
-  constructor(public af: AngularFire) {
+  constructor(public af: AngularFire, private formBuilder: FormBuilder) {
     this.model = { email: "", password: "" };
-
     this.item = af.database.list('/users/');
-
     this.af.auth.subscribe((auth) => {
      this.authState = auth;
     });
   }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
-      username: new FormControl(''),
+    this.form = this.formBuilder.group({
+      email: this.formBuilder.control(''),
+      password: this.formBuilder.control(''),
+      username: this.formBuilder.control(''),
 
-      fname: new FormControl(''),
-      mi: new FormControl(''),
-      lname: new FormControl(''),
+      fname: this.formBuilder.control(''),
+      mi: this.formBuilder.control(''),
+      lname: this.formBuilder.control(''),
     });
   }
 
