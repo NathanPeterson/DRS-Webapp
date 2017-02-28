@@ -107,7 +107,11 @@ export class RegisterComponent implements OnInit {
         diet: data.special,
 
       })
-    ).catch((err) => {
+    ).then(()=>{
+      this.af.auth.getAuth().auth.sendEmailVerification();
+      console.log("Sent Email verification");
+      alert("Sent Email verification");
+    }).catch((err) => {
         alert(err);
     });
   }
