@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
+import { MyEventPageComponent } from './my-event-page/my-event-page.component';
 
 const routes: Routes = [
   {
@@ -25,10 +26,10 @@ const routes: Routes = [
   //   path: 'contact',
   //   // component: HeroesComponent
   // },
-  // {
-  //   path: 'event',
-  //   // component: HeroesComponent
-  // },
+  {
+    path: 'event',
+    component: MyEventPageComponent
+  },
   // {
   //   path: 'forum',
   //   // component: HeroesComponent

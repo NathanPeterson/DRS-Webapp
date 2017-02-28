@@ -1,0 +1,26 @@
+.keynoteimg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 750px;
+  height: 500px;
+}
+
+.keynoteSpeaker h1{
+  text-align: center;
+}
+
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: 300px;
+}
+
+.carousel-caption{
+  color: black;
+  text-align: left;
+  margin-left: 20px;
+  padding-top: 50px;
+}
