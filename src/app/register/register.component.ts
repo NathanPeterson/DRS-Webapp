@@ -104,7 +104,7 @@ export class RegisterComponent implements OnInit {
         subdiscipline: data.subdiscipline,
 
         special: data.special,
-        diet: data.special,
+        diet: data.dietRestriction,
 
       })
     ).then(()=>{
