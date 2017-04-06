@@ -1,0 +1,33 @@
+.form-control{
+  width: 500px
+}
+ul{
+  list-style-type: none;
+}
+.requiredInfo{
+  background-color: grey;
+  padding: 20px;
+}
+
+.address{
+  background-color: lightblue;
+  padding: 20px;
+}
+
+.fullname{
+  background-color: pink;
+  padding: 20px;
+}
+
+.school{
+  background-color: orange;
+  padding: 20px;
+}
+
+.additional{
+  background-color: lightgreen;
+  padding: 20px;
+}
+h4{
+  font-weight: bold;
+}

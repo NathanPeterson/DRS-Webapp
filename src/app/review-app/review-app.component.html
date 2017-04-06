@@ -1,3 +1,137 @@
-<p>
-  review-app works!
-</p>
+<header>
+  <h2>Register an Account</h2>
+</header>
+
+<form
+  [formGroup] = "form"
+  (ngSubmit)="submit(form.value)">
+
+  <ul>
+    <div class="required">
+      <h4>Login Info</h4>
+
+      <div class="requiredInfo">
+      <li>
+        <label for="email">Email</label>
+        <input required type="email" class="form-control" id="email" name="email" placeholder="Email" formControlName = "email" />
+      </li>
+      <li>
+        <label for="password">Password</label>
+        <input required type="password" class="form-control" id="password" name="password" placeholder="Password" formControlName = "password" />
+      </li>
+      <li>
+        <label for="name">Username</label>
+        <input required type="text" class="form-control" name="username" id="username" placeholder="Username" formControlName ="username">
+      </li>
+    </div>
+    </div>
+
+    <div class="userInfo">
+      <h4>User Information</h4>
+
+      <div class="fullname">
+        <li>
+          <label for="firstName">First Name</label>
+          <input required type="text" class="form-control" name="firstname" id="fname" placeholder="First Name" formControlName ="fname">
+        </li>
+        <li>
+          <label for="mi">Middle Initial</label>
+          <input required type="text" class="form-control" name="mi" id="mi" placeholder="Middle Initial" formControlName ="mi">
+        </li>
+        <li>
+          <label for="lname">Last Name</label>
+          <input required type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" formControlName ="lname">
+        </li>
+      </div>
+
+
+
+      <div class="address">
+        <h4>Address Information</h4>
+        <li>
+          <label for="address">Address</label>
+          <input required type="text" class="form-control" name="address" id="address" placeholder="Address" formControlName ="address">
+        </li>
+        <li>
+          <label for="city">City</label>
+          <input required type="text" class="form-control" name="city" id="city" placeholder="City" formControlName ="city">
+        </li>
+        <li>
+          <label for="states">State</label>
+          <select required name="state" id="state" formControlName ="state">
+            <option *ngFor="let state of states" value="{{state.abbreviation}}">{{state.abbreviation}}</option>
+          </select>
+        </li>
+        <li>
+          <label for="zipcode">Zipcode</label>
+          <input required type="text" class="form-control" name="zipcode" id="zipcode" placeholder="Zipcode" formControlName ="zipcode">
+        </li>
+      </div>
+
+
+      <div class="school">
+        <h4>School Information</h4>
+        <li>
+          <label for="university">University</label>
+          <select required name="univ" id="univ" formControlName ="univ">
+            <option value="" disabled selected>Select your Institution</option>
+            <option value="Not in Indiana">Other</option>
+            <option *ngFor="let institution of institutions" value="{{institution.institution}}">{{institution.institution}}</option>
+          </select>
+        </li>
+        <li>
+          <label for="department">Department</label>
+          <input required type="text" class="form-control" name="department" id="department" placeholder="department" formControlName ="department">
+        </li>
+        <li>
+          <label for="discipline">Discipline</label>
+          <input required type="text" class="form-control" name="discipline" id="discipline" placeholder="discipline" formControlName ="discipline">
+        </li>
+        <li>
+          <label for="subdiscipline">Subdiscipline</label>
+          <input required type="text" class="form-control" name="subdiscipline" id="subdiscipline" placeholder="subdiscipline" formControlName ="subdiscipline">
+        </li>
+      </div>
+
+    </div>
+
+    <div class="additional">
+      <h4>Additional Information</h4>
+      <li>
+        <label for="phoneNumber">Phone Number</label>
+        <input required type="text" class="form-control" name="pnum" id="pnum" placeholder="(###) ### - ####" formControlName ="pnum">
+      </li>
+
+      <li>
+        <p><label for="special">Do you need special considerations?</label>
+        Yes
+        <input type="radio" formControlName ="special"  [value]="true" (click)="onSpecialYes()">
+        No
+        <input type="radio" formControlName ="special"  [value]="false" (click)="onSpecialNo()">
+        </p>
+        <div [hidden]="!special">
+          <h1>Special Considerations Form</h1>
+        </div>
+      </li>
+      <li>
+        <p><label for="restrictions">Do you have any Dietary Restriction?</label>
+        Yes
+        <input type="radio" formControlName ="diet"  [value]="true" (click)="onDietYes()">
+        No
+        <input type="radio" formControlName ="diet"  [value]="false" (click)="onDietNo()">
+        </p>
+        <div [hidden]="!dietRestriction">
+          <h1>Diet Restrictions Form</h1>
+        </div>
+      </li>
+    </div>
+
+  </ul>
+
+  <br>
+
+
+
+
+  <button type="submit" class="btn btn-default">Register as Reviewer</button>
+</form>
