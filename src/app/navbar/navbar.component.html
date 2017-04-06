@@ -32,10 +32,17 @@
         <li><a routerLink = "/event" routerLinkActive="active">Event</a></li>
         <li><a href="#">Forums</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <div *ngIf="authState">
+        <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink = "/home" routerLinkActive="active" (click)="logout()">{{ authState.auth.email }} (Logout)</a></li>
+        </ul>
+      </div>
+      <div *ngIf="!authState">
+        <ul class="nav navbar-nav navbar-right">
         <li><a routerLink = "/login" routerLinkActive="active">Login</a></li>
         <li><a routerLink = "/register" routerLinkActive="active">Register</a></li>
-      </ul>
+        </ul>
+      </div>
     </div><!--/.nav-collapse -->
   </div>
 </nav>

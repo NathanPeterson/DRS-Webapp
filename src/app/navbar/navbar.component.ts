@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  public authState;
 
-  constructor() { }
+  constructor(public af: AngularFire) {
+    this.af.auth.subscribe((auth) => {
+      this.authState = auth;
+    });
+  }
 
   ngOnInit() {
+  }
+
+  public logout() {
+    this.af.auth.logout();
   }
 
 }
