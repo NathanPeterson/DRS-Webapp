@@ -7,7 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { MyEventPageComponent } from './my-event-page/my-event-page.component';
-
+import { ProposalAppComponent} from './proposal-app/proposal-app.component'
+import { ReviewAppComponent} from './review-app/review-app.component'
 const routes: Routes = [
   {
     path: '',
@@ -41,6 +42,14 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'proposal-app',
+    component: ProposalAppComponent
+  },
+  {
+    path: 'review-app',
+    component: ReviewAppComponent
   },
   // {
   //   path: 'contact',

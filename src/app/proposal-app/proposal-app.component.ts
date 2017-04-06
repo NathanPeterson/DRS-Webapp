@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FirebaseApp } from 'angularfire2';
 
 @Component({
   selector: 'app-proposal-app',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./proposal-app.component.css']
 })
 export class ProposalAppComponent implements OnInit {
-
-  constructor() { }
-
+  image: string;
+  constructor(@Inject(FirebaseApp) firebaseApp: any) {
+    const storageRef = firebaseApp.storage().ref().child('images/image.png');
+    storageRef.getDownloadURL().then(url => this.image = url);
+  }
   ngOnInit() {
   }
 
