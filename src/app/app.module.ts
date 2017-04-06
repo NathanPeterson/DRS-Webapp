@@ -29,6 +29,8 @@ import { StatesService } from './services/states.service'
 
 import { CarouselModule } from 'ng2-bootstrap';
 import { MyEventPageComponent } from './my-event-page/my-event-page.component';
+import { ReviewAppComponent } from './review-app/review-app.component';
+import { ProposalAppComponent } from './proposal-app/proposal-app.component';
 
 const authConfig = {
     provider: AuthProviders.Password,
@@ -47,7 +49,9 @@ const authConfig = {
     RegisterComponent,
     AboutComponent,
     LoginComponent,
-    MyEventPageComponent
+    MyEventPageComponent,
+    ReviewAppComponent,
+    ProposalAppComponent
   ],
   imports: [
     BrowserModule,
