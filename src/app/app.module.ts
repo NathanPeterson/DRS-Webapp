@@ -32,6 +32,9 @@ import { MyEventPageComponent } from './my-event-page/my-event-page.component';
 import { ReviewAppComponent } from './review-app/review-app.component';
 import { ProposalAppComponent } from './proposal-app/proposal-app.component';
 
+import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import { UploadImagesService } from './services/upload-images.service';
+
 const authConfig = {
     provider: AuthProviders.Password,
     method: AuthMethods.Password
@@ -51,7 +54,8 @@ const authConfig = {
     LoginComponent,
     MyEventPageComponent,
     ReviewAppComponent,
-    ProposalAppComponent
+    ProposalAppComponent,
+    NgDropFilesDirective,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,7 @@ const authConfig = {
   providers: [
     InstitutionService,
     StatesService,
+    UploadImagesService,
   ],
   bootstrap: [AppComponent]
 })
