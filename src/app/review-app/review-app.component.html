@@ -1,5 +1,5 @@
 <header>
-  <h2>Register an Account</h2>
+  <h2>Register to be a Reviewer</h2>
 </header>
 
 <form
@@ -7,25 +7,6 @@
   (ngSubmit)="submit(form.value)">
 
   <ul>
-    <div class="required">
-      <h4>Login Info</h4>
-
-      <div class="requiredInfo">
-      <li>
-        <label for="email">Email</label>
-        <input required type="email" class="form-control" id="email" name="email" placeholder="Email" formControlName = "email" />
-      </li>
-      <li>
-        <label for="password">Password</label>
-        <input required type="password" class="form-control" id="password" name="password" placeholder="Password" formControlName = "password" />
-      </li>
-      <li>
-        <label for="name">Username</label>
-        <input required type="text" class="form-control" name="username" id="username" placeholder="Username" formControlName ="username">
-      </li>
-    </div>
-    </div>
-
     <div class="userInfo">
       <h4>User Information</h4>
 
@@ -101,37 +82,11 @@
         <label for="phoneNumber">Phone Number</label>
         <input required type="text" class="form-control" name="pnum" id="pnum" placeholder="(###) ### - ####" formControlName ="pnum">
       </li>
-
-      <li>
-        <p><label for="special">Do you need special considerations?</label>
-        Yes
-        <input type="radio" formControlName ="special"  [value]="true" (click)="onSpecialYes()">
-        No
-        <input type="radio" formControlName ="special"  [value]="false" (click)="onSpecialNo()">
-        </p>
-        <div [hidden]="!special">
-          <h1>Special Considerations Form</h1>
-        </div>
-      </li>
-      <li>
-        <p><label for="restrictions">Do you have any Dietary Restriction?</label>
-        Yes
-        <input type="radio" formControlName ="diet"  [value]="true" (click)="onDietYes()">
-        No
-        <input type="radio" formControlName ="diet"  [value]="false" (click)="onDietNo()">
-        </p>
-        <div [hidden]="!dietRestriction">
-          <h1>Diet Restrictions Form</h1>
-        </div>
-      </li>
     </div>
 
   </ul>
 
   <br>
-
-
-
 
   <button type="submit" class="btn btn-default">Register as Reviewer</button>
 </form>
