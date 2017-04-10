@@ -53,7 +53,7 @@ export class UploadFilesService {
 
  private saveFile(image:any) {
    this.af.database.list(`/${this.FOLDER_NAME}/`).update(this.fileName, image);
-   this.af.database.list(`/users/`+ this.authState.uid  +`/proposals/`).update( this.fileName, { proposalURL: image.url, proposalFile: image.name });
+   this.af.database.list(`/users/`+ this.authState.uid  +`/proposals/`).update( this.fileName, { proposalURL: image.url, proposalFile: image.fileName });
  }
 
 }
