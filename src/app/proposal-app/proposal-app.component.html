@@ -1,10 +1,75 @@
 <br><br><br><br>
 
 <div class="info">
-  <h1>Submit Your Proposal</h1>
+  <form
+    [formGroup] = "form"
+    (ngSubmit)="submit(form.value)">
+    <h1>Submit Your Proposal</h1>
+    <div class="userInfo">
+      <h4>User Information</h4>
+
+      <div class="fullname">
+        <ul >
+          <li>
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstname" id="fname" placeholder="First Name" formControlName ="fname">
+          </li>
+          <li>
+            <label for="mi">Middle Initial</label>
+            <input type="text" class="form-control" name="mi" id="mi" placeholder="Middle Initial" formControlName ="mi">
+          </li>
+          <li>
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" formControlName ="lname">
+          </li>
+        </ul>
+      </div>
+
+      <div class="school">
+        <h4>School Information</h4>
+        <li>
+          <label for="university">University</label>
+          <select name="univ" id="univ" formControlName ="univ">
+            <option value="" disabled selected>Select your Institution</option>
+            <option value="Not in Indiana">Other</option>
+            <option *ngFor="let institution of institutions" value="{{institution.institution}}">{{institution.institution}}</option>
+          </select>
+        </li>
+        <li>
+          <label for="department">Department</label>
+          <input type="text" class="form-control" name="department" id="department" placeholder="department" formControlName ="department">
+        </li>
+        <li>
+          <label for="discipline">Discipline</label>
+          <input type="text" class="form-control" name="discipline" id="discipline" placeholder="discipline" formControlName ="discipline">
+        </li>
+        <li>
+          <label for="subdiscipline">Subdiscipline</label>
+          <input type="text" class="form-control" name="subdiscipline" id="subdiscipline" placeholder="subdiscipline" formControlName ="subdiscipline">
+        </li>
+      </div>
+
+  </div>
+
+<button type="submit" class="btn btn-default">Register</button>
+</form>
 
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class ="fileDrop">
 
