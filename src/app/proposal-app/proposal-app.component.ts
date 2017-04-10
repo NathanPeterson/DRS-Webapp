@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FileItem } from '../directives/file-item';
-import { UploadImagesService } from '../services/upload-images.service';
+import { UploadFilesService } from '../services/upload-files.service';
 
 @Component({
   selector: 'app-proposal-app',
@@ -13,16 +13,16 @@ export class ProposalAppComponent {
   isEnabledUpload: boolean = true;
   files: Array<FileItem[]> = [];
 
-  constructor(public uploadImagesService: UploadImagesService) {
+  constructor(public uploadFilesService: UploadFilesService) {
   }
 
   public fileOverDropZone(e:any):void {
     this.isDropZoneOver = e;
   }
 
-  uploadImagesToFirebase() {
+  uploadFilesToFirebase() {
     this.isEnabledUpload = false;
-    this.uploadImagesService.uploadImagesToFirebase(this.files);
+    this.uploadFilesService.uploadFilesToFirebase(this.files, "proposals");
   }
 
  clearFiles() {

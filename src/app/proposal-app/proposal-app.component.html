@@ -2,7 +2,7 @@
 
 <div class="info">
   <h1>Submit Your Proposal</h1>
-  
+
 
 </div>
 
@@ -25,7 +25,7 @@
 
     <h3>Upload Files</h3>
 
-    <button type="button" class="btn btn-success" (click)="uploadImagesToFirebase()" [disabled]="files?.length == 0 || !isEnabledUpload">
+    <button type="button" class="btn btn-success" (click)="uploadFilesToFirebase()" [disabled]="files?.length == 0 || !isEnabledUpload">
         <span class="glyphicon glyphicon-upload"></span> Upload files to Firebase
     </button>
     <button type="button" class="btn btn-danger" (click)="clearFiles()">

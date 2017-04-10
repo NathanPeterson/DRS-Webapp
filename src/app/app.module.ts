@@ -33,7 +33,7 @@ import { ReviewAppComponent } from './review-app/review-app.component';
 import { ProposalAppComponent } from './proposal-app/proposal-app.component';
 
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
-import { UploadImagesService } from './services/upload-images.service';
+import { UploadFilesService } from './services/upload-files.service';
 
 const authConfig = {
     provider: AuthProviders.Password,
@@ -69,7 +69,7 @@ const authConfig = {
   providers: [
     InstitutionService,
     StatesService,
-    UploadImagesService,
+    UploadFilesService,
   ],
   bootstrap: [AppComponent]
 })

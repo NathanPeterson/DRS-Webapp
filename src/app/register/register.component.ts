@@ -40,7 +40,6 @@ export class RegisterComponent implements OnInit {
               private institutionService: InstitutionService,
               private statesService: StatesService) {
     this.model = { email: "", password: "" };
-    this.item = af.database.list('/users/');
     this.af.auth.subscribe((auth) => {
      this.authState = auth;
     });
@@ -82,8 +81,9 @@ export class RegisterComponent implements OnInit {
     this.af.auth.createUser(this.model).then((success) =>{
         console.log(data);
         this.currentUser = this.authState.uid;
+        this.item = this.af.database.list('/users');
     }).then(() =>
-      this.item.push({
+      this.item.update(this.currentUser,{
         uid: this.currentUser,
         username: data.username,
         email: data.email,
