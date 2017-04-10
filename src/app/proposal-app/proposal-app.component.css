@@ -1,4 +1,7 @@
-.drop-zone { border: dotted 3px lightgray; opacity: 0.5; color: #666; text-align: center }
+.drop-zone { border: dotted 3px lightgray; opacity: 0.5; color: #666; text-align: center; width: 450px;}
 .file-over { border: dotted 3px dodgerblue; }
 .table { margin-top: 30px; }
 .text-green { color: green }
+.fileDrop{
+  margin-left: 400px;
+}

@@ -67,7 +67,7 @@ export class NgDropFilesDirective {
   }
 
   private _fileCanBeAdded(file:File):boolean {
-    return (!this._fileIsAlreadyDropped(file) && this._fileTypeIsImage(file.type));
+    return (!this._fileIsAlreadyDropped(file) && (this._fileTypeIsImage(file.type) || this._fileTypeIsText(file.type) || this._fileTypeIsPDF(file.type) || this._fileTypeIsWordDoc(file.type)));
   }
 
   private _fileIsAlreadyDropped(file:File):boolean {
@@ -76,6 +76,15 @@ export class NgDropFilesDirective {
 
   private _fileTypeIsImage(fileType:string):boolean {
     return (fileType == ''? false: fileType.startsWith('image'));
+  }
+  private _fileTypeIsText(fileType:string):boolean {
+    return (fileType == ''? false: fileType.startsWith('text'));
+  }
+  private _fileTypeIsPDF(fileType:string):boolean {
+    return (fileType == ''? false: fileType.endsWith('pdf'));
+  }
+  private _fileTypeIsWordDoc(fileType:string):boolean {
+    return (fileType == ''? false: fileType.endsWith('docx'));
   }
 
 }
