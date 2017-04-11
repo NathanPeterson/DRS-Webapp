@@ -9,6 +9,7 @@ export class UploadFilesService {
 
   private IMAGES_FOLDER: string = 'images';
   private FOLDER_NAME: string;
+  private PROPOSAL_TITLE: string;
   private authState;
   private fileName;
 
@@ -26,15 +27,17 @@ export class UploadFilesService {
     });
   }
 
-  uploadFilesToFirebase(files: Array<FileItem[]>, folderName: string) {
+  uploadFilesToFirebase(files: Array<FileItem[]>, folderName: string, proposalTitle: string) {
     let storageRef = firebase.storage().ref();
     this.FOLDER_NAME = folderName;
+    this.PROPOSAL_TITLE = proposalTitle;
+
     _.each(files, (item:FileItem) => {
 
       let random = (Math.floor(Math.random() * 999999999 ) + 1).toString();
 
       item.isUploading = true;
-      let uploadTask: firebase.storage.UploadTask = storageRef.child(`${this.FOLDER_NAME}/${random + ' - ' + item.file.name}`).put(item.file);
+      let uploadTask: firebase.storage.UploadTask = storageRef.child(`${this.FOLDER_NAME}/${this.PROPOSAL_TITLE}/${item.file.name}`).put(item.file);
 
       uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
         (snapshot) => item.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
@@ -43,7 +46,7 @@ export class UploadFilesService {
           item.url = uploadTask.snapshot.downloadURL;
           item.isUploading = false;
           this.fileName = item.file.name.slice(0, -4).split(" ").join("").toLowerCase() + '-' + random;
-          this.saveFile({ fileName: item.file.name, fileNameModified: random + ' - ' + item.file.name, url: item.url, owner: this.authState.uid });
+          this.saveFile({ fileName: item.file.name, fileNameModified: random + ' - ' + item.file.name, url: item.url});
         }
       );
 
@@ -52,8 +55,9 @@ export class UploadFilesService {
  }
 
  private saveFile(image:any) {
-   this.af.database.list(`/${this.FOLDER_NAME}/`).update(this.fileName, image);
-   this.af.database.list(`/users/`+ this.authState.uid  +`/proposals/`).update( this.fileName, { proposalURL: image.url, proposalFile: image.fileName });
+   this.af.database.list(`/${this.FOLDER_NAME}/`).update(this.PROPOSAL_TITLE, {owner: this.authState.uid});
+   this.af.database.list(`/${this.FOLDER_NAME}/` + this.PROPOSAL_TITLE + /files/).update(this.fileName, image);
+   this.af.database.list(`/users/`+ this.authState.uid  +`/proposals/` + this.PROPOSAL_TITLE + `/files/`).update( this.fileName, { proposalURL: image.url, proposalFile: image.fileName });
  }
 
 }

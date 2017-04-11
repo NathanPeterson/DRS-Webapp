@@ -26,7 +26,7 @@ export class ProposalAppComponent {
   constructor(private uploadFilesService: UploadFilesService,
               private formBuilder: FormBuilder,
               private institutionService: InstitutionService,
-              private af: AngularFire
+              private af: AngularFire,
               private proposalDomains: ProposalDomainService) {
 
       this.institutions = this.institutionService.get();
@@ -47,8 +47,7 @@ export class ProposalAppComponent {
       discipline: this.formBuilder.control(''),
       subdiscipline: this.formBuilder.control(''),
 
-
-      propType: this.formBuilder.control(''),
+      propDomain: this.formBuilder.control(''),
       propTitle: this.formBuilder.control(''),
     });
 
@@ -64,6 +63,9 @@ export class ProposalAppComponent {
         department: this.formBuilder.control(info.department),
         discipline: this.formBuilder.control(info.discipline),
         subdiscipline: this.formBuilder.control(info.subdiscipline),
+
+        propDomain: this.formBuilder.control(''),
+        propTitle: this.formBuilder.control(''),
       })
     });
   }
@@ -84,9 +86,12 @@ export class ProposalAppComponent {
       discipline: data.discipline,
       subdiscipline: data.subdiscipline,
     }).then(() =>
-      this.uploadFilesService.uploadFilesToFirebase(this.files, "proposals")
+      this.uploadFilesService.uploadFilesToFirebase(this.files, "proposals", data.propTitle)
     ).then(() => {
-
+      this.af.database.list(`/users/` + this.currentUser + `/proposals/`).update(data.propTitle, {
+        proposalTitle: data.propTitle,
+        proposalDomain: data.propDomain,
+      })
     });
   }
 
