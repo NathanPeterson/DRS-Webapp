@@ -3,7 +3,7 @@
 <div class="info">
   <form
     [formGroup] = "form"
-    (ngSubmit)="submit(form.value)">
+    (ngSubmit)="uploadFilesToFirebase(form.value)">
     <h1>Submit Your Proposal</h1>
     <div class="userInfo">
       <h4>User Information</h4>
@@ -50,71 +50,74 @@
 
   </div>
 
-<button type="submit" class="btn btn-default">Register</button>
+
+<div class="proposalInfo">
+  <div class="proposalForm">
+    <h2>Proposal Information</h2>
+    <li>
+      <label for="proposalTitle">Title</label>
+      <input type="text" class="form-control" name="title" id="title" placeholder="title" formControlName ="propTitle">
+    </li>
+    <li>
+      <label for="proposalDomain">Domain</label>
+      <select name="" id="domain" >
+        <option value="" disabled selected>Select your proposal domain</option>
+        <option value="other">Other</option>
+        <option *ngFor="let domain of domains" value="{{domain.domain}}">{{domain.domain}}</option>
+      </select>
+    </li>
+  </div>
+
+
+
+
+  <div class ="fileDrop">
+
+      <h3>Select files</h3>
+
+      <div NgDropFiles
+            [ngClass]="{'file-over': isDropZoneOver}"
+            (fileOver)="fileOverDropZone($event)"
+            [files]="files"
+            class="well drop-zone">
+          <h4>Drop your files here</h4>
+          <img src="/assets/drop-images.png"/>
+      </div>
+
+  </div>
+
+  <div>
+
+      <h3>Upload Files</h3>
+
+      <button type="submit" class="btn btn-success" [disabled]="files?.length == 0 || !isEnabledUpload">
+          <span class="glyphicon glyphicon-upload"></span> Upload files to Firebase
+      </button>
+      <button type="button" class="btn btn-danger" (click)="clearFiles()">
+          <span class="glyphicon glyphicon-trash"></span> Clear files
+      </button>
+
+      <table class="table" *ngIf="files.length > 0">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Size</th>
+                  <th>Progress</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of files">
+                  <td [ngClass]="{'text-green': item.isUploading}"><strong>{{ item?.file?.name }}</strong></td>
+                  <td nowrap>{{ item?.file?.size / 1024 / 1024 | number:'.2' }} MB</td>
+                  <td>
+                      <div class="progress" style="margin-bottom: 0;">
+                          <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+  </div>
+</div>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class ="fileDrop">
-
-    <h3>Select files</h3>
-
-    <div NgDropFiles
-          [ngClass]="{'file-over': isDropZoneOver}"
-          (fileOver)="fileOverDropZone($event)"
-          [files]="files"
-          class="well drop-zone">
-        <h4>Drop your files here</h4>
-        <img src="/assets/drop-images.png"/>
-    </div>
-
-</div>
-
-<div>
-
-    <h3>Upload Files</h3>
-
-    <button type="button" class="btn btn-success" (click)="uploadFilesToFirebase()" [disabled]="files?.length == 0 || !isEnabledUpload">
-        <span class="glyphicon glyphicon-upload"></span> Upload files to Firebase
-    </button>
-    <button type="button" class="btn btn-danger" (click)="clearFiles()">
-        <span class="glyphicon glyphicon-trash"></span> Clear files
-    </button>
-
-    <table class="table" *ngIf="files.length > 0">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Size</th>
-                <th>Progress</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of files">
-                <td [ngClass]="{'text-green': item.isUploading}"><strong>{{ item?.file?.name }}</strong></td>
-                <td nowrap>{{ item?.file?.size / 1024 / 1024 | number:'.2' }} MB</td>
-                <td>
-                    <div class="progress" style="margin-bottom: 0;">
-                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-</div>

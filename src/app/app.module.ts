@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 
 import { InstitutionService } from './services/institution.service'
 import { StatesService } from './services/states.service'
+import { ProposalDomainService } from './services/proposal-domain.service'
 
 import { CarouselModule } from 'ng2-bootstrap';
 import { MyEventPageComponent } from './my-event-page/my-event-page.component';
@@ -69,6 +70,7 @@ const authConfig = {
   providers: [
     InstitutionService,
     StatesService,
+    ProposalDomainService,
     UploadFilesService,
   ],
   bootstrap: [AppComponent]

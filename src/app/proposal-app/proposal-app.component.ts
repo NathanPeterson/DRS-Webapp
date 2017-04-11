@@ -3,6 +3,7 @@ import { FileItem } from '../directives/file-item';
 import { UploadFilesService } from '../services/upload-files.service';
 import { Validators, FormBuilder } from '@angular/forms';
 import { InstitutionService } from '../services/institution.service';
+import { ProposalDomainService } from '../services/proposal-domain.service';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 @Component({
@@ -20,30 +21,19 @@ export class ProposalAppComponent {
   currentUser;
   authState;
   name;
+  domains;
 
   constructor(private uploadFilesService: UploadFilesService,
               private formBuilder: FormBuilder,
               private institutionService: InstitutionService,
-              private af: AngularFire) {
+              private af: AngularFire
+              private proposalDomains: ProposalDomainService) {
 
       this.institutions = this.institutionService.get();
+      this.domains = this.proposalDomains.get();
       this.af.auth.subscribe((auth) => {
        this.authState = auth;
       });
-      // const Users = this.af.database.list("/users", {
-      //   preserveSnapshot: true,
-      //   query: {
-      //     equalTo: this.currentUser
-      //   }
-      // });
-
-
-      // currentUserInfo.subscribe(
-      //   val => console.log(val)
-      // )
-
-      // console.log("This is my current user " + this.currentUser)
-      // console.log("This is my current user 2 " + currentUserInfo)
   }
 
   ngOnInit() {
@@ -56,7 +46,12 @@ export class ProposalAppComponent {
       department: this.formBuilder.control(''),
       discipline: this.formBuilder.control(''),
       subdiscipline: this.formBuilder.control(''),
-    })
+
+
+      propType: this.formBuilder.control(''),
+      propTitle: this.formBuilder.control(''),
+    });
+
     this.currentUser = this.authState.uid;
     const currentUserInfo = this.af.database.object('/users/' + this.currentUser);
     currentUserInfo.subscribe((info) =>{
@@ -71,11 +66,14 @@ export class ProposalAppComponent {
         subdiscipline: this.formBuilder.control(info.subdiscipline),
       })
     });
-
-
   }
 
-  submit(data){
+  public fileOverDropZone(e:any):void {
+    this.isDropZoneOver = e;
+  }
+
+  uploadFilesToFirebase(data) {
+    this.isEnabledUpload = false;
     this.af.database.list(`/users/`).update(this.currentUser,{
       firstName: data.fname,
       mi: data.mi,
@@ -85,18 +83,11 @@ export class ProposalAppComponent {
       department: data.department,
       discipline: data.discipline,
       subdiscipline: data.subdiscipline,
-    })
-  )
+    }).then(() =>
+      this.uploadFilesService.uploadFilesToFirebase(this.files, "proposals")
+    ).then(() => {
 
-  }
-
-  public fileOverDropZone(e:any):void {
-    this.isDropZoneOver = e;
-  }
-
-  uploadFilesToFirebase() {
-    this.isEnabledUpload = false;
-    this.uploadFilesService.uploadFilesToFirebase(this.files, "proposals");
+    });
   }
 
  clearFiles() {
