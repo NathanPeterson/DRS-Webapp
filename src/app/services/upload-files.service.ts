@@ -45,8 +45,8 @@ export class UploadFilesService {
         () => {
           item.url = uploadTask.snapshot.downloadURL;
           item.isUploading = false;
-          this.fileName = item.file.name.slice(0, -4).split(" ").join("").toLowerCase() + '-' + random;
-          this.saveFile({ fileName: item.file.name, fileNameModified: random + ' - ' + item.file.name, url: item.url});
+          this.fileName = item.file.name.slice(0, -4).split(" ").join("").toLowerCase();
+          this.saveFile({ fileName: item.file.name, url: item.url});
         }
       );
 
