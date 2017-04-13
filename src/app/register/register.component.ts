@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Validators, FormBuilder } from '@angular/forms';
@@ -38,7 +38,8 @@ export class RegisterComponent implements OnInit {
   constructor(public af: AngularFire,
               private formBuilder: FormBuilder,
               private institutionService: InstitutionService,
-              private statesService: StatesService) {
+              private statesService: StatesService,
+              private router: Router) {
     this.model = { email: "", password: "" };
     this.af.auth.subscribe((auth) => {
      this.authState = auth;
@@ -79,7 +80,6 @@ export class RegisterComponent implements OnInit {
     this. model = { email: data.email, password: data.password }
 
     this.af.auth.createUser(this.model).then((success) =>{
-        console.log(data);
         this.currentUser = this.authState.uid;
         this.item = this.af.database.list('/users');
     }).then(() =>
@@ -109,10 +109,11 @@ export class RegisterComponent implements OnInit {
       })
     ).then(()=>{
       this.af.auth.getAuth().auth.sendEmailVerification();
-      console.log("Sent Email verification");
       alert("Sent Email verification");
     }).catch((err) => {
         alert(err);
+    }).then((success) =>{
+      this.router.navigate(['/home']
     });
   }
 
