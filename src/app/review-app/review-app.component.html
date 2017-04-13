@@ -29,7 +29,7 @@
         <div class="fullname">
           <li>
             <label for="firstName">First Name</label>
-            <input required type="text" class="form-control" name="firstname" id="fname" placeholder="First Name" formControlName ="fname">
+            <input required type="text" class="form-control" name="firstname" id="fname" placeholder="First Name" formControlName ="fname" required>
           </li>
           <li>
             <label for="mi">Middle Initial</label>
@@ -37,7 +37,7 @@
           </li>
           <li>
             <label for="lname">Last Name</label>
-            <input required type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" formControlName ="lname">
+            <input required type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" formControlName ="lname" required>
           </li>
         </div>
 
@@ -45,7 +45,7 @@
           <h4>School Information</h4>
           <li>
             <label for="university">University</label>
-            <select required name="univ" id="univ" formControlName ="univ">
+            <select required name="univ" id="univ" formControlName ="univ" required>
               <option value="" disabled selected>Select your Institution</option>
               <option value="Not in Indiana">Other</option>
               <option *ngFor="let institution of institutions" value="{{institution.institution}}">{{institution.institution}}</option>
@@ -53,15 +53,15 @@
           </li>
           <li>
             <label for="department">Department</label>
-            <input required type="text" class="form-control" name="department" id="department" placeholder="department" formControlName ="department">
+            <input required type="text" class="form-control" name="department" id="department" placeholder="department" formControlName ="department" required>
           </li>
           <li>
             <label for="discipline">Discipline</label>
-            <input required type="text" class="form-control" name="discipline" id="discipline" placeholder="discipline" formControlName ="discipline">
+            <input required type="text" class="form-control" name="discipline" id="discipline" placeholder="discipline" formControlName ="discipline" required>
           </li>
           <li>
             <label for="subdiscipline">Subdiscipline</label>
-            <input required type="text" class="form-control" name="subdiscipline" id="subdiscipline" placeholder="subdiscipline" formControlName ="subdiscipline">
+            <input required type="text" class="form-control" name="subdiscipline" id="subdiscipline" placeholder="subdiscipline" formControlName ="subdiscipline" required>
           </li>
         </div>
 
