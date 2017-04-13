@@ -13,14 +13,6 @@
       <ul class="nav navbar-nav">
         <li class="active"><a routerLink = "/home" routerLinkActive="active">Home</a></li>
         <li><a routerLink = "/about" routerLinkActive="active" onClick="LoadMyJs('app/about/timeline.js')">About</a></li>
-        <!-- <li class="dropdown">
-          <a href="#about" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#about/about">About</a></li>
-            <li><a href="#about/history">History</a></li>
-            <li><a href="#about/past-symposia">Past Symposia</a></li>
-          </ul>
-        </li> -->
         <li class="dropdown">
           <a href="#contact" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -31,6 +23,12 @@
         </li>
         <li><a routerLink = "/event" routerLinkActive="active">Event</a></li>
         <li><a href="#">Forums</a></li>
+        <li *ngIf="reviewer || admin" id="reviewerPortal">
+            <a routerLink = "/event" routerLinkActive="active">Reviewer Portal</a>
+        </li>
+        <li *ngIf="admin" id="adminPortal">
+            <a routerLink = "/event" routerLinkActive="active">Admin Portal</a>
+        </li>
       </ul>
       <div *ngIf="authState">
         <ul class="nav navbar-nav navbar-right">
