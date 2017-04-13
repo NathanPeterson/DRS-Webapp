@@ -22,6 +22,7 @@ export class ProposalAppComponent {
   authState;
   name;
   domains;
+  isSubmitting = false;
 
   constructor(private uploadFilesService: UploadFilesService,
               private formBuilder: FormBuilder,
@@ -98,6 +99,10 @@ export class ProposalAppComponent {
  clearFiles() {
   this.files = [];
   this.isEnabledUpload = true;
+ }
+
+ proposal(){
+   this.isSubmitting = !this.isSubmitting;
  }
 
 }

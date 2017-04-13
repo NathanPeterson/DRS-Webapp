@@ -1,126 +1,136 @@
 <br><br><br><br>
+<div *ngIf="!isSubmitting" class="proposalPrompt">
+  <h1>Im just some text!</h1>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <button type="button" (click)="proposal()" name="button" id="makeproposal" class="btn btn-primary btn-lg">Make a Proposal Submission Today</button>
+</div>
 
-<div class="info">
-  <form
-    [formGroup] = "form"
-    (ngSubmit)="uploadFilesToFirebase(form.value)">
-    <h1>Submit Your Proposal</h1>
-    <div class="userInfo">
-      <h4>User Information</h4>
-      <div class="fullname">
-        <ul >
+
+<div *ngIf="isSubmitting" class="proposalApplication">
+  <button type="button" (click)="proposal()" name="button" id="cancelproposal" class="btn btn-danger btn-lg">Cancel Proposal Submission</button>
+  <div class="info">
+    <form
+      [formGroup] = "form"
+      (ngSubmit)="uploadFilesToFirebase(form.value)">
+      <h1>Submit Your Proposal</h1>
+      <div class="userInfo">
+        <h4>User Information</h4>
+        <div class="fullname">
+          <ul >
+            <li>
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control" name="firstname" id="fname" placeholder="First Name" formControlName ="fname" required>
+            </li>
+            <li>
+              <label for="mi">Middle Initial</label>
+              <input type="text" class="form-control" name="mi" id="mi" placeholder="Middle Initial" formControlName ="mi">
+            </li>
+            <li>
+              <label for="lname">Last Name</label>
+              <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" formControlName ="lname" required>
+            </li>
+          </ul>
+        </div>
+
+        <div class="school">
+          <h4>School Information</h4>
           <li>
-            <label for="firstName">First Name</label>
-            <input type="text" class="form-control" name="firstname" id="fname" placeholder="First Name" formControlName ="fname" required>
+            <label for="university">University</label>
+            <select name="univ" id="univ" formControlName ="univ" required>
+              <option value="" disabled selected>Select your Institution</option>
+              <option value="Not in Indiana">------Other--------</option>
+              <option *ngFor="let institution of institutions" value="{{institution.institution}}">{{institution.institution}}</option>
+            </select>
           </li>
           <li>
-            <label for="mi">Middle Initial</label>
-            <input type="text" class="form-control" name="mi" id="mi" placeholder="Middle Initial" formControlName ="mi">
+            <label for="department">Department</label>
+            <input type="text" class="form-control" name="department" id="department" placeholder="department" formControlName ="department" required>
           </li>
           <li>
-            <label for="lname">Last Name</label>
-            <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" formControlName ="lname" required>
+            <label for="discipline">Discipline</label>
+            <input type="text" class="form-control" name="discipline" id="discipline" placeholder="discipline" formControlName ="discipline" required>
           </li>
-        </ul>
+          <li>
+            <label for="subdiscipline">Subdiscipline</label>
+            <input type="text" class="form-control" name="subdiscipline" id="subdiscipline" placeholder="subdiscipline" formControlName ="subdiscipline" required>
+          </li>
+        </div>
+
+    </div>
+
+
+  <div class="proposalInfo">
+    <div class="proposalForm">
+      <h2>Proposal Information</h2>
+      <li>
+        <label for="proposalTitle">Title</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="Title" formControlName ="propTitle" required>
+      </li>
+      <li>
+        <label for="proposalDomain">Domain</label>
+        <select name="" id="domain" formControlName="propDomain" required>
+          <option value="" disabled selected>Select your proposal domain</option>
+          <option value="other">------Other--------</option>
+          <option *ngFor="let domain of domains" value="{{domain.domain}}">{{domain.domain}}</option>
+        </select>
+      </li>
+      <li>
+
+      </li>
+    </div>
+
+
+
+
+    <div class ="fileDrop">
+
+        <h3>Select files</h3>
+
+        <div NgDropFiles
+              [ngClass]="{'file-over': isDropZoneOver}"
+              (fileOver)="fileOverDropZone($event)"
+              [files]="files"
+              class="well drop-zone">
+            <h4>Drop your files here</h4>
+            <img src="/assets/drop-images.png"/>
+        </div>
+
+    </div>
+
+    <div>
+
+        <h3>Upload Files</h3>
+
+        <button type="submit" class="btn btn-success" [disabled]="files?.length == 0 || !isEnabledUpload">
+            <span class="glyphicon glyphicon-upload"></span> Upload files to Firebase
+        </button>
+        <button type="button" class="btn btn-danger" (click)="clearFiles()">
+            <span class="glyphicon glyphicon-trash"></span> Clear files
+        </button>
+
+        <table class="table" *ngIf="files.length > 0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Size</th>
+                    <th>Progress</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of files">
+                    <td [ngClass]="{'text-green': item.isUploading}"><strong>{{ item?.file?.name }}</strong></td>
+                    <td nowrap>{{ item?.file?.size / 1024 / 1024 | number:'.2' }} MB</td>
+                    <td>
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
       </div>
-
-      <div class="school">
-        <h4>School Information</h4>
-        <li>
-          <label for="university">University</label>
-          <select name="univ" id="univ" formControlName ="univ" required>
-            <option value="" disabled selected>Select your Institution</option>
-            <option value="Not in Indiana">------Other--------</option>
-            <option *ngFor="let institution of institutions" value="{{institution.institution}}">{{institution.institution}}</option>
-          </select>
-        </li>
-        <li>
-          <label for="department">Department</label>
-          <input type="text" class="form-control" name="department" id="department" placeholder="department" formControlName ="department" required>
-        </li>
-        <li>
-          <label for="discipline">Discipline</label>
-          <input type="text" class="form-control" name="discipline" id="discipline" placeholder="discipline" formControlName ="discipline" required>
-        </li>
-        <li>
-          <label for="subdiscipline">Subdiscipline</label>
-          <input type="text" class="form-control" name="subdiscipline" id="subdiscipline" placeholder="subdiscipline" formControlName ="subdiscipline" required>
-        </li>
-      </div>
-
-  </div>
-
-
-<div class="proposalInfo">
-  <div class="proposalForm">
-    <h2>Proposal Information</h2>
-    <li>
-      <label for="proposalTitle">Title</label>
-      <input type="text" class="form-control" name="title" id="title" placeholder="Title" formControlName ="propTitle" required>
-    </li>
-    <li>
-      <label for="proposalDomain">Domain</label>
-      <select name="" id="domain" formControlName="propDomain" required>
-        <option value="" disabled selected>Select your proposal domain</option>
-        <option value="other">------Other--------</option>
-        <option *ngFor="let domain of domains" value="{{domain.domain}}">{{domain.domain}}</option>
-      </select>
-    </li>
-    <li>
-
-    </li>
-  </div>
-
-
-
-
-  <div class ="fileDrop">
-
-      <h3>Select files</h3>
-
-      <div NgDropFiles
-            [ngClass]="{'file-over': isDropZoneOver}"
-            (fileOver)="fileOverDropZone($event)"
-            [files]="files"
-            class="well drop-zone">
-          <h4>Drop your files here</h4>
-          <img src="/assets/drop-images.png"/>
-      </div>
-
-  </div>
-
-  <div>
-
-      <h3>Upload Files</h3>
-
-      <button type="submit" class="btn btn-success" [disabled]="files?.length == 0 || !isEnabledUpload">
-          <span class="glyphicon glyphicon-upload"></span> Upload files to Firebase
-      </button>
-      <button type="button" class="btn btn-danger" (click)="clearFiles()">
-          <span class="glyphicon glyphicon-trash"></span> Clear files
-      </button>
-
-      <table class="table" *ngIf="files.length > 0">
-          <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Size</th>
-                  <th>Progress</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let item of files">
-                  <td [ngClass]="{'text-green': item.isUploading}"><strong>{{ item?.file?.name }}</strong></td>
-                  <td nowrap>{{ item?.file?.size / 1024 / 1024 | number:'.2' }} MB</td>
-                  <td>
-                      <div class="progress" style="margin-bottom: 0;">
-                          <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
-                      </div>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-
+    </div>
+    </form>
   </div>
 </div>
-</form>
