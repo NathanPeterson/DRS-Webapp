@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Validators, FormBuilder } from '@angular/forms';
 import { InstitutionService } from '../services/institution.service';
 import { StatesService } from '../services/states.service';
@@ -18,6 +18,7 @@ export class ReviewAppComponent implements OnInit {
   authState;
   name;
   domains;
+  checkboxArray;
   isSubmitting = false;
 
   constructor(private formBuilder: FormBuilder,
@@ -34,20 +35,6 @@ export class ReviewAppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      fname: this.formBuilder.control(''),
-      mi: this.formBuilder.control(''),
-      lname: this.formBuilder.control(''),
-
-      univ: this.formBuilder.control(''),
-      department: this.formBuilder.control(''),
-      discipline: this.formBuilder.control(''),
-      subdiscipline: this.formBuilder.control(''),
-
-      propDomain: this.formBuilder.control(''),
-      propTitle: this.formBuilder.control(''),
-      pnum: this.formBuilder.control(''),
-    });
   }
 
   reviewerApp(){
@@ -66,16 +53,43 @@ export class ReviewAppComponent implements OnInit {
           discipline: this.formBuilder.control(info.discipline),
           subdiscipline: this.formBuilder.control(info.subdiscipline),
 
-          propDomain: this.formBuilder.control(''),
-          propTitle: this.formBuilder.control(''),
-
           pnum: this.formBuilder.control(info.phoneNumber),
-        })
+
+          highdegree: this.formBuilder.control(''),
+          likability: this.formBuilder.control(''),
+          pickout: this.formBuilder.control(''),
+        });
       });
       return true;
     }
     this.router.navigate(['/login']);
     return false;
+  }
+
+  check(data){
+    data.isChecked = !data.isChecked;
+  }
+
+  sendReviewerAppToFirebase(data){
+    this.af.database.list(`/users/` + this.currentUser).update("reviewerApplication", {
+      highdegree: data.highdegree,
+      likability: data.likability,
+      pickout: data.pickout,
+    }).then(()=>{
+      for(let domain of this.domains){
+        this.af.database.list(`/users/` + this.currentUser + "/reviewerApplication/").update("/domains/",{[domain.domain] : domain.isChecked})
+      }
+    }).then(()=>{
+
+      const currentUserInfo = this.af.database.object('/users/' + this.currentUser);
+      currentUserInfo.subscribe((info) =>{
+        this.af.database.list(`reviewerApplications`).update(info.firstName + ' ' + info.lastName, {
+          uid: this.currentUser,
+          approved: false
+        })
+      }
+
+    }).then((success)=>alert("submitted"));
   }
 
 }

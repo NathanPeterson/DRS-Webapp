@@ -5,31 +5,40 @@ export class ProposalDomainService {
 
   domains = [
     {
-      "domain": "Education (Pedagogy & Curriculum)"
+      "domain": "Education (Pedagogy & Curriculum)",
+      "isChecked": false,
     },
     {
-      "domain": "Research"
+      "domain": "Research",
+      "isChecked": false,
     },
     {
-      "domain": "Commmunity Engagement"
+      "domain": "Commmunity Engagement",
+      "isChecked": false,
     },
     {
-      "domain": "Student Engagement"
+      "domain": "Student Engagement",
+      "isChecked": false,
     },
     {
-      "domain": "Professional Development & Mentoring"
+      "domain": "Professional Development & Mentoring",
+      "isChecked": false,
     },
     {
-      "domain": "Dispartities (Medical, Mental Health)"
+      "domain": "Dispartities (Medical, Mental Health)",
+      "isChecked": false,
     },
     {
-      "domain": "Practical & Clinical Applications"
+      "domain": "Practical & Clinical Applications",
+      "isChecked": false,
     },
     {
-      "domain": "Business"
+      "domain": "Business",
+      "isChecked": false,
     },
     {
-      "domain": "Arts & Entertainment"
+      "domain": "Arts & Entertainment",
+      "isChecked": false,
     },
   ]
 }

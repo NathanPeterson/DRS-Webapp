@@ -20,7 +20,7 @@
   <button type="button" (click)="reviewerApp()" name="button" id="becomeReviewer" class="btn btn-danger btn-lg">Cancel Application</button>
   <form
     [formGroup] = "form"
-    (ngSubmit)="submit(form.value)">
+    (ngSubmit)="sendReviewerAppToFirebase(form.value)">
 
     <ul>
       <div class="userInfo">
@@ -78,6 +78,38 @@
     </ul>
 
     <br>
+
+
+    <h2>Reviewer Application</h2>
+    <ul>
+      <div class="questions">
+        <li>
+          <label for="questionOne">What is the highest degree you have obtained?</label>
+          <input type="text" placeholder="Degree type" formControlName= "highdegree">
+        </li>
+        <li>
+          <label for="questionTwo">Why would you like to be a reviewer?</label>
+          <input type="text" placeholder="Explain why you would want to be a reviewer...." formControlName= "likability">
+        </li>
+        <li>
+          <label for="questionThree">How will your background help us pickout good proposals that match our theme?</label>
+          <input type="text" name="pickout" placeholder="Explain how your background will help us...." formControlName= "pickout">
+        </li>
+        <li>
+          <label for="questionFour">Select which topics you would be interested in reviewing</label>
+          <table>
+            <tr *ngFor="let domain of domains"><input type="checkbox" class="btn btn-secondary" value="{{domain.isChecked}}" (click)="check(domain)">{{domain.domain}}</tr>
+          </table>
+        </li>
+
+      </div>
+    </ul>
+
+
+
+
+
+
 
     <button type="submit" class="btn btn-default">Register as Reviewer</button>
   </form>

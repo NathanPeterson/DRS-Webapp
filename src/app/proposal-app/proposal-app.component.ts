@@ -40,19 +40,6 @@ export class ProposalAppComponent {
   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      fname: this.formBuilder.control(''),
-      mi: this.formBuilder.control(''),
-      lname: this.formBuilder.control(''),
-
-      univ: this.formBuilder.control(''),
-      department: this.formBuilder.control(''),
-      discipline: this.formBuilder.control(''),
-      subdiscipline: this.formBuilder.control(''),
-
-      propDomain: this.formBuilder.control(''),
-      propTitle: this.formBuilder.control(''),
-    });
   }
 
   public fileOverDropZone(e:any):void {
