@@ -1,0 +1,68 @@
+
+ <h1 class="page-header">Dashboard</h1>
+
+ <div class="row placeholders">
+   <div class="col-xs-4 col-sm-2 placeholder">
+     <h1 class ="number-of-users">5</h1>
+     <h4>Users</h4>
+     <span class="text-muted">Created</span>
+   </div>
+   <div class="col-xs-4 col-sm-2 placeholder">
+     <h1 class ="number-of-users">59</h1>
+     <h4>Reviewer Applications</h4>
+     <span class="text-muted">Pending...</span>
+   </div>
+   <div class="col-xs-4 col-sm-2 placeholder">
+     <h1 class ="number-of-users">1/25</h1>
+     <h4>Reviewers</h4>
+     <span class="text-muted">Approved</span>
+   </div>
+   <div class="col-xs-4 col-sm-2 placeholder">
+     <h1 class ="number-of-users">243</h1>
+     <h4>Proposal Applications</h4>
+     <span class="text-muted">Pending...</span>
+   </div>
+   <div class="col-xs-4 col-sm-2 placeholder">
+     <h1 class ="number-of-users">1</h1>
+     <h4>Admin</h4>
+     <span class="text-muted">Currently</span>
+   </div>
+   <div class="col-xs-4 col-sm-2 placeholder">
+     <h1 class ="number-of-users">$96</h1>
+     <h4>Earned</h4>
+     <span class="text-muted">For Symposium</span>
+   </div>
+ </div>
+
+ <h2 class="sub-header">Section title</h2>
+ <button type="button" (click)="loadData()">Data</button>
+ <div class="table-responsive">
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>#</th>
+         <th>Username</th>
+         <th>UID</th>
+         <th>Proposal App</th>
+         <th>Reviewer App</th>
+         <th>Status</th>
+         <th>Promote</th>
+         <th>Demote</th>
+         <th>Paid?</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let user of accountArray">
+         <td>{{accountArray.indexOf(user) +1}}</td>
+         <td>{{user.username}}</td>
+         <td>{{user.uid}}</td>
+         <td>{{user.pApp}}</td>
+         <td>{{user.rApp}}</td>
+         <td>{{user.status}}</td>
+         <td>promo</td>
+         <td>demo</td>
+         <td>{{user.paid}}</td>
+       </tr>
+     </tbody>
+   </table>
+ </div>

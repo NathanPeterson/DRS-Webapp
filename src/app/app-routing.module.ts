@@ -10,6 +10,7 @@ import { MyEventPageComponent } from './my-event-page/my-event-page.component';
 import { ProposalAppComponent} from './proposal-app/proposal-app.component';
 import { ReviewAppComponent} from './review-app/review-app.component';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
+import { AdminOverviewComponent } from './admin-portal/overview/overview.component';
 const routes: Routes = [
   {
     path: '',
@@ -55,6 +56,12 @@ const routes: Routes = [
   {
     path: 'admin-portal',
     component: AdminPortalComponent
+    children:[
+      {
+        path: 'admin-overview',
+        component: AdminOverviewComponent
+      }
+    ]
   },
   // {
   //   path: 'contact',

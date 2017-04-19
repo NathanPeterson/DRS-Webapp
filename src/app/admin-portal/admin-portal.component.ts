@@ -11,6 +11,7 @@ export class AdminPortalComponent implements OnInit {
   authState;
   currentUser;
   accountArray=[];
+  adminHome;
 
   constructor(private af: AngularFire,private router: Router) {
     this.af.auth.subscribe((auth) => {
@@ -19,31 +20,16 @@ export class AdminPortalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.adminHome = true;
   }
-  loadData(){
-    if (this.authState) {
-      this.currentUser = this.authState.uid;
-      const listOfUsers = this.af.database.list('/users/');
-      listOfUsers.subscribe((users) =>{
-        users.forEach(info =>{
-          let reviewApp = false;
-          let proposalApp = false;
-          if(info.reviewerApplication){
-            reviewApp = true;
-          };
-          if(info.proposals){
-            proposalApp = true;
-          }
-          this.accountArray.push({
-            username: info.username,
-            uid: info.uid,
-            pApp: proposalApp,
-            rApp: reviewApp,
-            status: info.accountType,
-            paid: false,
-          });
-        })
-      });
-    }
+
+  setHomeTrue(){
+    this.adminHome = true;
+    console.log(this.adminHome);
   }
+  setHomeFalse(){
+    this.adminHome = false;
+    console.log(this.adminHome);
+  }
+
 }

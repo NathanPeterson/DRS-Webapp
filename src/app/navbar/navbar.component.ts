@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
   public authState;
   private reviewer =false;
   private admin =false;
+  currentUser;
 
   constructor(public af: AngularFire) {
     this.af.auth.subscribe((auth) => {
