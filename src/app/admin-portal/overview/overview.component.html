@@ -8,22 +8,22 @@
      <span class="text-muted">Created</span>
    </div>
    <div class="col-xs-4 col-sm-2 placeholder">
-     <h1 class ="number-of-users">59</h1>
+     <h1 class ="number-of-users">{{totalReviewerApps}}</h1>
      <h4>Reviewer Applications</h4>
      <span class="text-muted">Pending...</span>
    </div>
    <div class="col-xs-4 col-sm-2 placeholder">
-     <h1 class ="number-of-users">1/25</h1>
+     <h1 class ="number-of-users">{{totalReviewers}}/{{MAX_REVIEWERS}}</h1>
      <h4>Reviewers</h4>
      <span class="text-muted">Approved</span>
    </div>
    <div class="col-xs-4 col-sm-2 placeholder">
-     <h1 class ="number-of-users">243</h1>
+     <h1 class ="number-of-users">{{totalProposals}}</h1>
      <h4>Proposal Applications</h4>
      <span class="text-muted">Pending...</span>
    </div>
    <div class="col-xs-4 col-sm-2 placeholder">
-     <h1 class ="number-of-users">1</h1>
+     <h1 class ="number-of-users">{{totalAdmins}}</h1>
      <h4>Admin</h4>
      <span class="text-muted">Currently</span>
    </div>
@@ -41,6 +41,7 @@
        <tr>
          <th>#</th>
          <th>Username</th>
+         <th>Email</th>
          <th>UID</th>
          <th>Proposal App</th>
          <th>Reviewer App</th>
@@ -54,6 +55,7 @@
        <tr *ngFor="let user of accountArray">
          <td>{{accountArray.indexOf(user) +1}}</td>
          <td>{{user.username}}</td>
+         <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
          <td>{{user.uid}}</td>
          <td>{{user.pApp}}</td>
          <td>{{user.rApp}}</td>
