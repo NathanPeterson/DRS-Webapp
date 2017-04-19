@@ -7,8 +7,9 @@ import { RegisterComponent } from './register/register.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { MyEventPageComponent } from './my-event-page/my-event-page.component';
-import { ProposalAppComponent} from './proposal-app/proposal-app.component'
-import { ReviewAppComponent} from './review-app/review-app.component'
+import { ProposalAppComponent} from './proposal-app/proposal-app.component';
+import { ReviewAppComponent} from './review-app/review-app.component';
+import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 const routes: Routes = [
   {
     path: '',
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'review-app',
     component: ReviewAppComponent
+  },
+  {
+    path: 'admin-portal',
+    component: AdminPortalComponent
   },
   // {
   //   path: 'contact',
