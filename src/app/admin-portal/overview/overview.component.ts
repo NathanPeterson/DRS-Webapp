@@ -11,6 +11,7 @@ export class AdminOverviewComponent implements OnInit {
   authState;
   currentUser;
   accountArray=[];
+  totalUsers;
 
   constructor(private af: AngularFire,private router: Router) {
     this.af.auth.subscribe((auth) => {
@@ -19,31 +20,31 @@ export class AdminOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
   }
   loadData(){
-    if (this.authState) {
-      this.currentUser = this.authState.uid;
-      const listOfUsers = this.af.database.list('/users/');
-      listOfUsers.subscribe((users) =>{
-        users.forEach(info =>{
-          let reviewApp = false;
-          let proposalApp = false;
-          if(info.reviewerApplication){
-            reviewApp = true;
-          };
-          if(info.proposals){
-            proposalApp = true;
-          }
-          this.accountArray.push({
-            username: info.username,
-            uid: info.uid,
-            pApp: proposalApp,
-            rApp: reviewApp,
-            status: info.accountType,
-            paid: false,
-          });
-        })
-      });
-    }
+    const listOfUsers = this.af.database.list('/users/');
+    listOfUsers.subscribe((users) =>{
+      this.accountArray = [];
+      users.forEach(info =>{
+        let reviewApp = false;
+        let proposalApp = false;
+        if(info.reviewerApplication){
+          reviewApp = true;
+        };
+        if(info.proposals){
+          proposalApp = true;
+        }
+        this.accountArray.push({
+          username: info.username,
+          uid: info.uid,
+          pApp: proposalApp,
+          rApp: reviewApp,
+          status: info.accountType,
+          paid: false,
+        });
+      })
+      this.totalUsers = this.accountArray.length;
+    });
   }
 }

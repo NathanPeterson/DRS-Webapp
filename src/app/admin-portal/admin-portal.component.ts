@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire,} from 'angularfire2';
 
 @Component({
   selector: 'app-admin-portal',
@@ -10,7 +10,6 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class AdminPortalComponent implements OnInit {
   authState;
   currentUser;
-  accountArray=[];
   adminHome;
 
   constructor(private af: AngularFire,private router: Router) {
