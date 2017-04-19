@@ -35,6 +35,7 @@ import { ProposalAppComponent } from './proposal-app/proposal-app.component';
 
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import { UploadFilesService } from './services/upload-files.service';
+import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 
 const authConfig = {
     provider: AuthProviders.Password,
@@ -57,6 +58,7 @@ const authConfig = {
     ReviewAppComponent,
     ProposalAppComponent,
     NgDropFilesDirective,
+    AdminPortalComponent,
   ],
   imports: [
     BrowserModule,
