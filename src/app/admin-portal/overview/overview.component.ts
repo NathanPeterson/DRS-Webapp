@@ -75,4 +75,36 @@ export class AdminOverviewComponent implements OnInit {
   isAdmin(data){
     return data.accountType === 'admin';
   }
+
+  promote(data){
+    let selectedUser = this.af.database.object('/users/' + data.uid);
+    let currentType;
+    selectedUser.subscribe(info =>{
+      currentType = info.accountType;
+    });
+    if(!currentType){
+      selectedUser.update({accountType: 'basic'});
+    }else if(currentType === 'basic'){
+      selectedUser.update({accountType: 'reviewer'});
+    }else if(currentType === 'reviewer'){
+      selectedUser.update({accountType: 'admin'});
+    }else if(currentType === 'admin'){
+      return;
+    }
+  }
+
+  demote(data){
+    let selectedUser = this.af.database.object('/users/' + data.uid);
+    let currentType;
+    selectedUser.subscribe(info =>{
+      currentType = info.accountType;
+    });
+    if(currentType === 'admin'){
+      selectedUser.update({accountType: 'reviewer'});
+    }else if(currentType === 'reviewer'){
+      selectedUser.update({accountType: 'basic'});
+    }else if(currentType === 'basic'){
+      return;
+    }
+  }
 }

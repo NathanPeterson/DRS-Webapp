@@ -60,8 +60,8 @@
          <td>{{user.pApp}}</td>
          <td>{{user.rApp}}</td>
          <td>{{user.status}}</td>
-         <td>promo</td>
-         <td>demo</td>
+         <td><button type="button" (click)="promote(user)">Promote</button></td>
+         <td><button type="button" (click)="demote(user)">Demote</button></td>
          <td>{{user.paid}}</td>
        </tr>
      </tbody>
