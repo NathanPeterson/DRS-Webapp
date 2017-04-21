@@ -35,4 +35,13 @@ export class ApplicationComponent{
       }
     }).update(data.fname + ' ' + data.lname,{approved: false});
   }
+  pending(data){
+    this.af.database.object('/users/' + data.uid + '/reviewerApplication/').update({application: 'pending...'});
+    this.af.database.list('/reviewerApplications/',{
+      query:{
+        orderByChild: 'uid',
+        equalTo: data.uid,
+      }
+    }).update(data.fname + ' ' + data.lname,{approved: 'pending...'});
+  }
 }

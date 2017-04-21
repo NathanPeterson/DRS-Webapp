@@ -77,3 +77,12 @@ h2 {
   color: #ffffff;
   text-decoration: none;
 }
+.pending{
+  display: block;
+  background-color: blue;
+  padding: 4px;
+  font-size: 20px;
+  border-radius: 4px;
+  color: #ffffff;
+  text-decoration: none;
+}
