@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
   public authState;
   private reviewer =false;
   private admin =false;
+  private owner = false;
   currentUser;
 
   constructor(public af: AngularFire) {
@@ -23,6 +24,8 @@ export class NavbarComponent implements OnInit {
             this.reviewer = true;
           }else if(info.accountType === "admin"){
             this.admin = true;
+          }else if(info.accountType === "owner"){
+            this.owner = true;
           }
         });
       }
