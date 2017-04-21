@@ -10,9 +10,18 @@ import { ProposalDomainService } from '../../services/proposal-domain.service';
 })
 
 export class AdminReviewerAppsComponent implements OnInit {
+  onApplicationDelete(mediaItem) { }
   authState;
   domains;
   reviewApplicationArray =[];
+  firstApplication = {
+    id: 1,
+    name: "Bob",
+    question1: "Series",
+    question2: "Science Fiction",
+    question3: 2010,
+    isFavorite: false
+  };
 
   constructor(private af: AngularFire,
               private router: Router,
@@ -32,17 +41,21 @@ export class AdminReviewerAppsComponent implements OnInit {
     listOfUsers.subscribe((applications) =>{
       this.reviewApplicationArray = [];
       applications.forEach(info =>{
-        let app = this.af.database.object('/users/' + info.uid +'/reviewerApplication/');
-        app.subscribe(app =>{
-              this.reviewApplicationArray.push({
-                highdegree: app.highdegree,
-                likability: app.likability,
-                pickout: app.pickout,
-              });
-              console.log(app)
-              console.log(this.reviewApplicationArray)
+        let user = this.af.database.object('/users/' + info.uid);
+        user.subscribe(userInfo=> {
+          let app = this.af.database.object('/users/' + info.uid +'/reviewerApplication/');
+          let currentUserInfo = this.firstApplication;
+          currentUserInfo.name = userInfo.username;
+          app.subscribe(app =>{
+                this.reviewApplicationArray.push({
+                  userinfo: currentUserInfo,
+                  highdegree: app.highdegree,
+                  likability: app.likability,
+                  pickout: app.pickout,
+                });
+          });
         });
-      })
+      });
     })
   }
 }
