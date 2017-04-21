@@ -34,25 +34,73 @@
    </div>
  </div>
 
- <h2 class="sub-header">Section title</h2>
+ <h2 class="sub-header">Database Users - {{currentTotal}} in table</h2>
  <div class="table-responsive">
    <table class="table table-striped">
      <thead>
        <tr>
          <th>#</th>
          <th>Username</th>
+
          <th>Email</th>
+
          <th>UID</th>
-         <th>Proposal App</th>
-         <th>Reviewer App</th>
-         <th>Status</th>
+
+         <th>
+           <div class="btn-group" dropdown>
+             <button type="button" class="btn btn-primary" (click) = "sortByReviewApp('','p')">Proposal App</button>
+             <button type="button" dropdownToggle class="btn btn-info dropdown-toggle dropdown-toggle-split"  style="height: 200%;">
+               <span class="caret"></span>
+             </button>
+             <ul *dropdownMenu class="dropdown-menu" role="menu" style = "cursor: pointer;">
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByReviewApp(true, 'p')">Submitted</a></li>
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByReviewApp(false, 'p')">Not Submitted</a></li>
+               <li class="divider dropdown-divider"></li>
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByReviewApp('default', 'p')">Restore Data</a>
+               </li>
+             </ul>
+           </div>
+         </th>
+
+         <th>
+           <div class="btn-group" dropdown>
+             <button type="button" class="btn btn-primary" (click) = "sortByReviewApp('','r')">Reviewer App</button>
+             <button type="button" dropdownToggle class="btn btn-info dropdown-toggle dropdown-toggle-split"  style="height: 200%;">
+               <span class="caret"></span>
+             </button>
+             <ul *dropdownMenu class="dropdown-menu" role="menu" style = "cursor: pointer;">
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByReviewApp(true, 'r')">Submitted</a></li>
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByReviewApp(false, 'r')">Not Submitted</a></li>
+               <li class="divider dropdown-divider"></li>
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByReviewApp('default', 'r')">Restore Data</a>
+               </li>
+             </ul>
+           </div>
+         </th>
+
+         <th>
+           <div class="btn-group" dropdown>
+             <button type="button" class="btn btn-primary" (click) = "sortByStatus()">Status</button>
+             <button type="button" dropdownToggle class="btn btn-info dropdown-toggle dropdown-toggle-split"  style="height: 200%;">
+               <span class="caret"></span>
+             </button>
+             <ul *dropdownMenu class="dropdown-menu" role="menu" style = "cursor: pointer;">
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByStatus('admin')">Admin</a></li>
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByStatus('reviewer')">Reviewer</a></li>
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByStatus('standard')">Standard</a></li>
+               <li class="divider dropdown-divider"></li>
+               <li role="menuitem"><a class="dropdown-item" (click) = "sortByStatus('default')">Restore Data</a>
+               </li>
+             </ul>
+           </div>
+         </th>
          <th>Promote</th>
          <th>Demote</th>
          <th>Paid?</th>
        </tr>
      </thead>
      <tbody>
-       <tr *ngFor="let user of accountArray">
+       <tr *ngFor="let user of accountArray" [ngClass]="user.status === 'owner' ? 'owner': 'notGold'" >
          <td>{{accountArray.indexOf(user) +1}}</td>
          <td>{{user.username}}</td>
          <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
@@ -60,10 +108,17 @@
          <td>{{user.pApp}}</td>
          <td>{{user.rApp}}</td>
          <td>{{user.status}}</td>
-         <td><button type="button" (click)="promote(user)">Promote</button></td>
-         <td><button type="button" (click)="demote(user)">Demote</button></td>
+         <td><button [disabled]="!canPromote(user)" type="button" (click)="promote(user)" class="btn btn-success" style="margin-left: 7px; display: block;">
+              <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+            </button>
+         </td>
+         <td><button [disabled]="!canDemote(user)" type="button" (click)="demote(user)" class="btn btn-danger" style="margin-left: 7px; display: block;">
+              <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+            </button>
+         </td>
          <td>{{user.paid}}</td>
        </tr>
+       <br><br><br>
      </tbody>
    </table>
  </div>

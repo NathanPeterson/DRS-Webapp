@@ -1,0 +1,14 @@
+tr:hover{
+  background-color: gold;
+}
+tr:nth-child(odd):hover{
+    background-color: gold;
+}
+
+.owner{
+  border: 3px solid green;
+}
+
+td{
+  font-size: 20px;
+}
