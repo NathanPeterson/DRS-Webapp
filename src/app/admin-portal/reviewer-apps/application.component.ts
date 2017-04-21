@@ -27,7 +27,7 @@ export class ApplicationComponent{
     }).update(data.fname + ' ' + data.lname,{approved: true});
   }
   reject(data){
-    this.af.database.object('/users/' + data.uid + '/reviewerApplication/').update({application: 'denied'});
+    this.af.database.object('/users/' + data.uid + '/reviewerApplication/').update({application: 'rejected'});
     this.af.database.list('/reviewerApplications/',{
       query:{
         orderByChild: 'uid',

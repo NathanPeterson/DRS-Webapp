@@ -1,8 +1,9 @@
 <h1>reviewer Apps works</h1>
-<button type="button" (click)="loadData()">Data</button>
 
 <section>
 <app-application
+  [ngClass]="{'medium-approved': application.application === 'approved' ,
+            'medium-rejected': application.application === 'rejected'}"
   *ngFor="let application of reviewApplicationArray"
   [application]="application"
   ></app-application>

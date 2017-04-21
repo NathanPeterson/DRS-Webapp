@@ -47,17 +47,16 @@ export class AdminReviewerAppsComponent implements OnInit {
         let user = this.af.database.object('/users/' + info.uid);
         user.subscribe(userInfo=> {
           let app = this.af.database.object('/users/' + info.uid +'/reviewerApplication/');
-          let currentUserInfo = this.firstApplication;
-          currentUserInfo.username = userInfo.username;
-          currentUserInfo.lname = userInfo.lastName;
-          currentUserInfo.fname = userInfo.firstName;
-          currentUserInfo.uid = userInfo.uid;
           app.subscribe(app =>{
                 this.reviewApplicationArray.push({
-                  userinfo: currentUserInfo,
+                  username: userInfo.username,
+                  fname: userInfo.firstName,
+                  lname: userInfo.lastName,
+                  uid: userInfo.uid,
                   highdegree: app.highdegree,
                   likability: app.likability,
                   pickout: app.pickout,
+                  application: app.application,
                 });
           });
         });

@@ -17,23 +17,23 @@ h2 {
   flex: 1;
 }
 
-:host.medium-movies{
-  border-color: #53ace4;
+:host.medium-approved{
+  border-color: green;
 }
-:host.medium-movies > h2 {
-  color: #53ace4;
+:host.medium-approved > h2 {
+  color: green;
 }
-:host.medium-series {
-  border-color: #45bf94;
-}
-:host.medium-series > h2 {
-  color: #45bf94;
-}
-:host {
+:host.medium-rejected {
   border-color: red;
 }
-:host h2 {
+:host.medium-rejected > h2 {
   color: red;
+}
+:host {
+  border-color: blue;
+}
+:host h2 {
+  color: blue;
 }
 
 .tools{
