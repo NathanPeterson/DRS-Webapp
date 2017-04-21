@@ -1,10 +1,9 @@
 <h1>reviewer Apps works</h1>
 <button type="button" (click)="loadData()">Data</button>
-<ul>
-  <li *ngFor="let applications of reviewApplicationArray">
-    <h1>{{aplication.highdegree}}</h1>
-    <h2>{{aplication.likability}}</h2>
-    <h3>{{aplication.pickout}}</h3>
+<ul *ngFor="let application of reviewApplicationArray">
+  <li >{{application.highdegree}}</li>
+  <li >{{application.likability}}</li>
+  <li >{{application.pickout}}</li>
 
-  </li>
+
 </ul>

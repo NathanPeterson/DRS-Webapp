@@ -32,15 +32,15 @@ export class AdminReviewerAppsComponent implements OnInit {
     listOfUsers.subscribe((applications) =>{
       this.reviewApplicationArray = [];
       applications.forEach(info =>{
-        let reviewApp;
         let app = this.af.database.object('/users/' + info.uid +'/reviewerApplication/');
         app.subscribe(app =>{
-              reviewApp = app;
               this.reviewApplicationArray.push({
-                [reviewApp.highdegree]: reviewApp.highdegree,
-                [reviewApp.likability]: reviewApp.likeability,
-                [reviewApp.pickout]: reviewApp.pickout,
+                highdegree: app.highdegree,
+                likability: app.likability,
+                pickout: app.pickout,
               });
+              console.log(app)
+              console.log(this.reviewApplicationArray)
         });
       })
     })
