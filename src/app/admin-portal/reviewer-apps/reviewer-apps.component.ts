@@ -37,7 +37,7 @@ export class AdminReviewerAppsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.loadData();
   }
   loadData(){
     const listOfUsers = this.af.database.list('/reviewerApplications/');

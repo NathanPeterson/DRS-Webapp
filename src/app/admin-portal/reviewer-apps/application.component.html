@@ -3,6 +3,6 @@
 <div>{{application.likability}}</div>
 <div>{{application.pickout}}</div>
 <div class="tools">
-  <a class="delete">Reject</a>
+  <a class="delete" (click)="reject(application.userinfo)">Reject</a>
   <a class="details" (click)="approve(application.userinfo)">Approve</a>
 </div>

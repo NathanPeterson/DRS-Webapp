@@ -12,12 +12,6 @@ export class ApplicationComponent{
   authState;
   @Input() application;
 
-  @Output() delete = new EventEmitter();
-
-  onDelete(){
-    this.delete.emit(this.application);
-  }
-
   constructor(private af: AngularFire,private router: Router) {
     this.af.auth.subscribe((auth) => {
      this.authState = auth;
@@ -31,5 +25,14 @@ export class ApplicationComponent{
         equalTo: data.uid,
       }
     }).update(data.fname + ' ' + data.lname,{approved: true});
+  }
+  reject(data){
+    this.af.database.object('/users/' + data.uid + '/reviewerApplication/').update({application: 'denied'});
+    this.af.database.list('/reviewerApplications/',{
+      query:{
+        orderByChild: 'uid',
+        equalTo: data.uid,
+      }
+    }).update(data.fname + ' ' + data.lname,{approved: false});
   }
 }
