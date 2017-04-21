@@ -12,7 +12,8 @@ import { ProposalDomainService } from '../../services/proposal-domain.service';
 export class AdminReviewerAppsComponent implements OnInit {
   onApplicationDelete(mediaItem) { }
   authState;
-  domains;
+  domainList;
+  domainArray;
   reviewApplicationArray =[];
   firstApplication = {
     id: 1,
@@ -33,7 +34,7 @@ export class AdminReviewerAppsComponent implements OnInit {
      this.authState = auth;
     });
 
-    this.domains = this.proposalDomains.get();
+    this.domainList = this.proposalDomains.get();
   }
 
   ngOnInit() {
@@ -48,6 +49,28 @@ export class AdminReviewerAppsComponent implements OnInit {
         user.subscribe(userInfo=> {
           let app = this.af.database.object('/users/' + info.uid +'/reviewerApplication/');
           app.subscribe(app =>{
+            let domains = this.af.database.object('/users/' + info.uid +'/reviewerApplication/domains/', {
+              query: {
+                orderByValue: true,
+                equalTo: true,
+              }
+            });
+            domains.subscribe(domains=>{
+              console.log(domains);
+              this.domainArray = [];
+              // for(let key of this.domainList){
+              //   // if(domains.(key.domain) === true){
+              //   //   this.domainArray.push(key.domain);
+              //   // }
+              //   let currentKey =key.domain;
+              //   console.log(currentKey);
+              //   if(currentKey === 'Research'){
+              //     console.log(domains.currentKey);
+              //   }
+              // }
+              for(let domain of domains){
+                console.log(domain);
+              }
                 this.reviewApplicationArray.push({
                   username: userInfo.username,
                   fname: userInfo.firstName,
@@ -57,7 +80,9 @@ export class AdminReviewerAppsComponent implements OnInit {
                   likability: app.likability,
                   pickout: app.pickout,
                   application: app.application,
+                  domains: this.domainArray,
                 });
+            })
           });
         });
       });
