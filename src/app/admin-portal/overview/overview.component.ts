@@ -221,4 +221,18 @@ export class AdminOverviewComponent implements OnInit {
       this.loadSortedData();
     }
   }
+
+  delete(data){
+    this.af.database.list('/users/').remove(data.uid).then(()=>{
+      alert("Are You sure you want to delete this user?")
+    }).then((success)=>{}).catch(err=>{})
+  }
+  canDelete(data){
+    if(data.status === 'owner'){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
 }
