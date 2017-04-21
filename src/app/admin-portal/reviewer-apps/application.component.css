@@ -36,11 +36,8 @@ h2 {
   color: blue;
 }
 
-.tools{
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+.btn-group{
+    margin-top: 8px;
 }
 
 .favorite{
@@ -61,17 +58,15 @@ h2 {
 .delete{
   display: block;
   background-color: #ec4342;
-  padding: 4px;
   font-size: 20px;
   border-radius: 4px;
   color: #ffffff;
   cursor: pointer;
 }
 
-.details{
+.approve{
   display: block;
   background-color: green;
-  padding: 4px;
   font-size: 20px;
   border-radius: 4px;
   color: #ffffff;
@@ -80,7 +75,6 @@ h2 {
 .pending{
   display: block;
   background-color: blue;
-  padding: 4px;
   font-size: 20px;
   border-radius: 4px;
   color: #ffffff;

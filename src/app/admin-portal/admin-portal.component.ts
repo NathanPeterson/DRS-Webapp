@@ -16,7 +16,7 @@ export class AdminPortalComponent implements OnInit {
     this.af.auth.subscribe((auth) => {
      this.authState = auth;
     });
-    this.adminHome =true;
+    this.adminHome =false;
   }
 
   ngOnInit() {

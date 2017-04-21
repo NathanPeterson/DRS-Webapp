@@ -1,10 +1,10 @@
 <h2>{{ application.username }}</h2>
 <h4>{{application.fname}} {{application.lname}}</h4>
-<div>{{application.highdegree}}</div>
-<div>{{application.likability}}</div>
-<div>{{application.pickout}}</div>
-<div class="tools">
-  <button type="button" name="button" class="delete" (click)="reject(application)">Reject</button>
-  <button type="button" name="button" class="pending" (click)="pending(application)">Pending...</button>
-  <button type="button" name="button" class="details" (click)="approve(application)">Approve</button>
+<div>Answer to Question 1: {{application.highdegree}}</div>
+<div>Answer to Question 2: {{application.likability}}</div>
+<div>Answer to Question 3: {{application.pickout}}</div>
+<div class="btn-group" role="group">
+  <button type="button" name="button" class="btn btn-default delete" (click)="reject(application)">Reject</button>
+  <button type="button" name="button" class="btn btn-default pending" (click)="pending(application)">Pending...</button>
+  <button type="button" name="button" class="btn btn-default approve" (click)="approve(application)">Approve</button>
 </div>
