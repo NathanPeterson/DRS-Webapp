@@ -10,6 +10,7 @@ import { AngularFire,} from 'angularfire2';
 
 export class ApplicationComponent{
   authState;
+  typeRestricted=true;
   @Input() application;
 
   constructor(private af: AngularFire,private router: Router) {
@@ -18,6 +19,17 @@ export class ApplicationComponent{
    });
   }
   approve(data){
+    let currentUser = this.af.database.object('/users/' + data.uid).subscribe(info=>{
+      if(info.accountType === 'admin' || info.accountType === 'owner'){
+        this.typeRestricted = true;
+      }else{
+        this.typeRestricted = false;
+      }
+    });
+    if(!this.typeRestricted){
+      this.af.database.object('/users/' + data.uid).update({accountType: 'reviewer'});
+    }
+
     this.af.database.object('/users/' + data.uid + '/reviewerApplication/').update({application: 'approved'});
     this.af.database.list('/reviewerApplications/',{
       query:{
@@ -27,6 +39,16 @@ export class ApplicationComponent{
     }).update(data.fname + ' ' + data.lname,{approved: true});
   }
   reject(data){
+    let currentUser = this.af.database.object('/users/' + data.uid).subscribe(info=>{
+      if(info.accountType === 'admin' || info.accountType === 'owner'){
+        this.typeRestricted = true;
+      }else{
+        this.typeRestricted = false;
+      }
+    });
+    if(!this.typeRestricted){
+      this.af.database.object('/users/' + data.uid).update({accountType: 'standard'});
+    }
     this.af.database.object('/users/' + data.uid + '/reviewerApplication/').update({application: 'rejected'});
     this.af.database.list('/reviewerApplications/',{
       query:{

@@ -1,8 +1,8 @@
 <h2>{{ application.username }}</h2>
-<h4>{{application.fname}} {{application.lname}}</h4>
-<div>Answer to Question 1: {{application.highdegree}}</div>
-<div>Answer to Question 2: {{application.likability}}</div>
-<div>Answer to Question 3: {{application.pickout}}</div>
+<h4><p class="template">Full Name: </p>{{application.fname}} {{application.lname}}</h4>
+<div><p class="template">Answer to Question 1: </p>{{application.highdegree}}</div>
+<div><p class="template">Answer to Question 2: </p>{{application.likability}}</div>
+<div><p class="template">Answer to Question 3: </p>{{application.pickout}}</div>
 <div class="btn-group" role="group">
   <button type="button" name="button" class="btn btn-default delete" (click)="reject(application)">Reject</button>
   <button type="button" name="button" class="btn btn-default pending" (click)="pending(application)">Pending...</button>

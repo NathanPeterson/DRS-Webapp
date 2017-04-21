@@ -17,6 +17,12 @@ h2 {
   flex: 1;
 }
 
+.template{
+    text-transform: capitalize;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
 :host.medium-approved{
   border-color: green;
 }
