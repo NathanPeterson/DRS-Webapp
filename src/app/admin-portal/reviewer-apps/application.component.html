@@ -1,8 +1,8 @@
-<h2>{{ application.userinfo.name }}</h2>
+<h2>{{ application.userinfo.username }}</h2>
 <div>{{application.highdegree}}</div>
 <div>{{application.likability}}</div>
 <div>{{application.pickout}}</div>
 <div class="tools">
   <a class="delete">Reject</a>
-  <a class="details">Approve</a>
+  <a class="details" (click)="approve(application.userinfo)">Approve</a>
 </div>

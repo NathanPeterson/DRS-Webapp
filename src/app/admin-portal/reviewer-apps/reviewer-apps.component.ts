@@ -16,10 +16,13 @@ export class AdminReviewerAppsComponent implements OnInit {
   reviewApplicationArray =[];
   firstApplication = {
     id: 1,
-    name: "Bob",
+    fname: "Bob",
+    lname: "Bob",
+    username: "Bob",
     question1: "Series",
     question2: "Science Fiction",
     question3: 2010,
+    uid: 2010,
     isFavorite: false
   };
 
@@ -45,7 +48,10 @@ export class AdminReviewerAppsComponent implements OnInit {
         user.subscribe(userInfo=> {
           let app = this.af.database.object('/users/' + info.uid +'/reviewerApplication/');
           let currentUserInfo = this.firstApplication;
-          currentUserInfo.name = userInfo.username;
+          currentUserInfo.username = userInfo.username;
+          currentUserInfo.lname = userInfo.lastName;
+          currentUserInfo.fname = userInfo.firstName;
+          currentUserInfo.uid = userInfo.uid;
           app.subscribe(app =>{
                 this.reviewApplicationArray.push({
                   userinfo: currentUserInfo,
