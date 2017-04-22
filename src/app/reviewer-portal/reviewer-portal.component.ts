@@ -8,7 +8,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
   styleUrls: ['./reviewer-portal.component.css']
 })
 export class ReviewerPortalComponent implements OnInit {
-  showSidebar = false;
+  showSidebar = true;
   reviewerHome = true;
   authState;
   currentUserType;
