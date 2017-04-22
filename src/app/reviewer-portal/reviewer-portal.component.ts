@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reviewer-portal.component.css']
 })
 export class ReviewerPortalComponent implements OnInit {
-
+  showSidebar = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  show(){
+    this.showSidebar = !this.showSidebar;
+  }
+
+  closeSideBar(){
+    this.showSidebar=false;
   }
 
 }

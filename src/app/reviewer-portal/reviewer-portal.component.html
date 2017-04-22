@@ -1,5 +1,34 @@
-<br><br><br><br><br><br><br>
+<div [ngClass]="{'sidenav-show': showSidebar === true ,
+                 'sidenav-hide': showSidebar === false}" id="mySidenav">
+  <button type="button" name="button" class="closebtn" (click)="closeSideBar()">&times;</button>
+  <a [routerLink] = "['/admin-portal']" routerLinkActive="['active']">Admin Portal Home</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
 
-<p>
-  reviewer-portal works!
-</p>
+<div [ngClass]="{'main-show': showSidebar === true ,
+                 'main-hide': showSidebar === false}">
+  <div class="container-fluid">
+
+   <div class="row">
+     <div class="col-sm-3 col-md-2">
+       <ul class="nav nav-sidebar">
+         <li class="active"><a (click)="setHomeTrue()" [routerLink] = "['/reviewer-portal']" routerLinkActive="['active']">Reviewer Portal Home</a></li>
+       </ul>
+       <ul class="nav nav-sidebar">
+         <li ><a (click)="setHomeFalse()" [routerLink] = "['/admin-portal/admin-overview']" routerLinkActive="['active']">Overview</a></li>
+         <li ><a (click)="setHomeFalse()" [routerLink] = "['/admin-portal/reviewer-apps']" routerLinkActive="['active']">Reviewer Apps  <span class="badge">4</span></a></li>
+         <li><button type="button" class="btn btn-primary" (click)="show()">open nav</button></li>
+      </ul>
+     </div>
+   </div>
+   <!-- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+     <div *ngIf="reviewerHome">
+       <h1>Welcome To Reviewer Home Page</h1>
+     </div>
+     <button type="button" name="button" class="btn btn-primary" (click)="show()">Show sidebar</button>
+     <router-outlet></router-outlet>
+   </div> -->
+ </div>
+</div>
