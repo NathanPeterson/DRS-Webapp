@@ -42,7 +42,9 @@ import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 import { AdminOverviewComponent } from './admin-portal/overview/overview.component';
 import { AdminReviewerAppsComponent } from './admin-portal/reviewer-apps/reviewer-apps.component';
 import { ApplicationComponent } from './admin-portal/reviewer-apps/application.component';
+
 import { ReviewerPortalComponent } from './reviewer-portal/reviewer-portal.component';
+import { ProposalPendingComponent } from './reviewer-portal/proposal-pending/proposal-pending.component';
 
 const authConfig = {
     provider: AuthProviders.Password,
@@ -70,6 +72,7 @@ const authConfig = {
     AdminReviewerAppsComponent,
     ApplicationComponent,
     ReviewerPortalComponent,
+    ProposalPendingComponent,
   ],
   imports: [
     BrowserModule,

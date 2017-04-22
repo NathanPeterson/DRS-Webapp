@@ -10,13 +10,12 @@ import { AngularFire,} from 'angularfire2';
 export class AdminPortalComponent implements OnInit {
   authState;
   currentUser;
-  adminHome;
+  adminHome=true;
 
   constructor(private af: AngularFire,private router: Router) {
     this.af.auth.subscribe((auth) => {
      this.authState = auth;
     });
-    this.adminHome =false;
   }
 
   ngOnInit() {
