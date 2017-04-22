@@ -13,6 +13,9 @@ import { ReviewAppComponent} from './review-app/review-app.component';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 import { AdminOverviewComponent } from './admin-portal/overview/overview.component';
 import { AdminReviewerAppsComponent } from './admin-portal/reviewer-apps/reviewer-apps.component';
+
+import { ReviewerPortalComponent } from './reviewer-portal/reviewer-portal.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -67,6 +70,12 @@ const routes: Routes = [
         path: 'reviewer-apps',
         component: AdminReviewerAppsComponent
       }
+    ]
+  },
+  {
+    path: 'reviewer-portal',
+    component: ReviewerPortalComponent,
+    children:[
     ]
   },
   // {
