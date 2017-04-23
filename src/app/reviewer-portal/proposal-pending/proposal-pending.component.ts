@@ -51,6 +51,9 @@ export class ProposalPendingComponent implements OnInit {
           uid: proposal.owner,
           status: proposal.status,
           files: currentFiles,
+          rejectCount: proposal.rejectCount,
+          approveCount: proposal.approveCount,
+          resetCount: proposal.resetCount,
         });
       });
     });
