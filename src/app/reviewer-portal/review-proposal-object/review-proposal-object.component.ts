@@ -42,4 +42,33 @@ export class ReviewProposalObjectComponent{
   public onHidden():void {
     this.isModalShown = false;
   }
+
+
+  approve(data){
+    this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'approved'});
+    this.af.database.object('/proposals/' + data.title,{
+      query:{
+        orderByChild: 'owner',
+        equalTo: data.uid,
+      }
+    }).update({status: 'approved'});
+  }
+  reject(data){
+    this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'rejected'});
+    this.af.database.object('/proposals/' + data.title,{
+      query:{
+        orderByChild: 'owner',
+        equalTo: data.uid,
+      }
+    }).update({status: 'rejected'});
+  }
+  pending(data){
+    this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'pending...'});
+    this.af.database.object('/proposals/' + data.title,{
+      query:{
+        orderByChild: 'owner',
+        equalTo: data.uid,
+      }
+    }).update({status: 'pending...'});
+  }
 }

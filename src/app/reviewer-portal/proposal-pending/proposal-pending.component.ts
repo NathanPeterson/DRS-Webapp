@@ -23,14 +23,17 @@ export class ProposalPendingComponent implements OnInit {
   }
 
   loadProposals(){
-    let listOfProposals = this.af.database.list('/proposals/');
+    let listOfProposals = this.af.database.list('/proposals/',{
+      query:{
+        orderByChild: 'status',
+        equalTo: 'pending...'
+      }
+    });
     listOfProposals.subscribe((proposals) => {
       this.proposalsArray=[];
       proposals.forEach(proposal =>{
         let currentFiles =[];
-        let title = proposal.$key;
-        let uid = proposal.owner;
-        let proposalFiles = this.af.database.list('/proposals/' + title + '/files/');
+        let proposalFiles = this.af.database.list('/proposals/' + proposal.$key + '/files/');
         proposalFiles.subscribe((files)=>{
           let i=0;
           files.forEach(file=>{
@@ -45,6 +48,7 @@ export class ProposalPendingComponent implements OnInit {
         this.proposalsArray.push({
           title: proposal.$key,
           uid: proposal.owner,
+          status: proposal.status,
           files: currentFiles,
         });
 

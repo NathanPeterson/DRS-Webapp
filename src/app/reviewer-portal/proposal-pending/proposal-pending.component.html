@@ -1,4 +1,6 @@
 <app-review-proposal-object
+[ngClass]="{'medium-approved': proposal.status === 'approved' ,
+            'medium-rejected': proposal.status === 'rejected'}"
   *ngFor="let proposal of proposalsArray"
   [proposal]="proposal"
   ></app-review-proposal-object>

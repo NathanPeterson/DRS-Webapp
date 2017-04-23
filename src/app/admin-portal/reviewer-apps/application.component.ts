@@ -20,7 +20,7 @@ export class ApplicationComponent{
   }
   approve(data){
     let currentUser = this.af.database.object('/users/' + data.uid).subscribe(info=>{
-      if(info.accountType === 'admin' || info.accountType === 'owner'){
+      if(info.accountType === 'admin' || info.accountType === 'owner' || info.accountType === 'reviewer'){
         this.typeRestricted = true;
       }else{
         this.typeRestricted = false;
