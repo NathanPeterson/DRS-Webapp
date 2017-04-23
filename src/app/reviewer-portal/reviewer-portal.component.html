@@ -5,6 +5,7 @@
   <a *ngIf="currentUserType === 'owner' || currentUserType === 'admin'" [routerLink] = "['/admin-portal']" routerLinkActive="['active']">Admin Portal Home</a>
   <a [routerLink] = "['/reviewer-portal']" routerLinkActive="['active']" (click)="setHomeTrue()">Reviewer Portal Home</a>
   <a [routerLink] = "['/reviewer-portal/proposal-pending']" routerLinkActive="['active']" (click)="setHomeFalse()">Proposals Pending</a>
+  <a [routerLink] = "['/reviewer-portal/proposal-approved']" routerLinkActive="['active']" (click)="setHomeFalse()">Proposals Approved</a>
 </div>
 
 <button type="button" class="btn btn-primary open-nav-btn" (click)="show()" style="position: fixed;">open nav <span class="glyphicon glyphicon-triangle-right"></span></button>

@@ -16,6 +16,7 @@ import { AdminReviewerAppsComponent } from './admin-portal/reviewer-apps/reviewe
 
 import { ReviewerPortalComponent } from './reviewer-portal/reviewer-portal.component';
 import { ProposalPendingComponent } from './reviewer-portal/proposal-pending/proposal-pending.component';
+import { ProposalApprovedComponent } from './reviewer-portal/proposal-approved/proposal-approved.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
       {
         path: 'proposal-pending',
         component: ProposalPendingComponent
+      },
+      {
+        path: 'proposal-approved',
+        component: ProposalApprovedComponent
       },
     ]
   },
