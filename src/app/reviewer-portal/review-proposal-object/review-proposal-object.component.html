@@ -1,6 +1,8 @@
 <header>
   <h2>{{ proposal.title }}</h2>
+  <span class="resetCounter">Reseted {{proposal.resetCount}} times</span>
   <h4><p class="template">{{proposal.uid}}</h4>
+
 </header>
 <body>
   <div class="template" *ngFor="let file of proposal.files">
@@ -52,10 +54,10 @@
     <span class="rejected">{{proposal.rejectCount}}</span> / <span class="approved">{{proposal.approveCount}}</span>
   </div>
 
-  <div *ngIf="proposal.status === 'pending...'"  class="btn-group action-btns" role="group">
-    <button type="button" name="button" class="btn btn-default delete" (click)="reject(proposal)">Reject</button>
+  <div class="btn-group action-btns" role="group">
+    <button *ngIf="proposal.status === 'pending...'" type="button" name="button" class="btn btn-default delete" (click)="reject(proposal)">Reject</button>
     <button *ngIf="currentUser === 'admin' || currentUser === 'owner'" type="button" name="button" class="btn btn-default pending"
             (click)="pending(proposal)">Pending...</button>
-    <button type="button" name="button" class="btn btn-default approve" (click)="approve(proposal)">Approve</button>
+    <button *ngIf="proposal.status === 'pending...'" type="button" name="button" class="btn btn-default approve" (click)="approve(proposal)">Approve</button>
   </div>
 </footer>
