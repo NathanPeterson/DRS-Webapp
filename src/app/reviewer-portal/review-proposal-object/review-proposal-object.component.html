@@ -1,10 +1,7 @@
 <h2>{{ proposal.title }}</h2>
 <h4><p class="template">{{proposal.uid}}</h4>
 <div class="template" *ngFor="let file of proposal.files">
-
-  <!-- <a href="{{file.fileURL}}" target="_blank">{{file.fileName}}</a> -->
-
-  <div *ngIf="file.pdf">
+  <div *ngIf="file.fileName.split('.').pop() === 'pdf'">
     <button type="button" class="btn btn-primary" (click)="showModal()">{{file.fileName}}</button>
       <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()"
         bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="application/pdf" aria-hidden="true">
@@ -26,13 +23,27 @@
   </div>
 </div>
 
-<div class="btn-group" dropdown>
-  <button dropdownToggle type="button" class="btn btn-info dropdown-toggle">
-    Download Files<span class="caret"></span>
-  </button>
-  <ul *dropdownMenu class="dropdown-menu" role="menu">
-    <li *ngFor="let downloadFile of proposal.files" role="menuitem"><a href="{{downloadFile.fileURL}}" download>{{downloadFile.fileName}}</a></li>
-  </ul>
+
+
+<div class="btn-group" role="group">
+  <div class="btn-group" dropdown>
+    <button dropdownToggle type="button" class="btn btn-default dropdown-toggle">
+      Open File<span class="caret"></span>
+    </button>
+    <ul *dropdownMenu class="dropdown-menu" role="menu">
+      <li *ngFor="let file of proposal.files" role="menuitem" >
+        <a href="{{file.fileURL}}" target="_blank">{{file.fileName}}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="btn-group" dropdown>
+    <button dropdownToggle type="button" class="btn btn-info dropdown-toggle">
+      Download Files<span class="caret"></span>
+    </button>
+    <ul *dropdownMenu class="dropdown-menu" role="menu">
+      <li *ngFor="let downloadFile of proposal.files" role="menuitem"><a href="{{downloadFile.fileURL}}" download>{{downloadFile.fileName}}</a></li>
+    </ul>
+  </div>
 </div>
 <div class="btn-group" role="group">
   <!-- <button type="button" name="button" class="btn btn-default delete" (click)="reject(application)">Reject</button>

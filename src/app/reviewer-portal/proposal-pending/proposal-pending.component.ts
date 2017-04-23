@@ -37,7 +37,6 @@ export class ProposalPendingComponent implements OnInit {
             currentFiles[i] ={
               fileName: file.fileName,
               fileURL: file.url,
-              pdf: file.pdf
             };
             i++;
           });
