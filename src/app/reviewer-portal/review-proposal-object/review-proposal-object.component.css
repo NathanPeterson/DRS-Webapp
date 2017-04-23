@@ -1,0 +1,88 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  border: 2px solid;
+  background-color: #29394b
+  padding 10px;
+  color:black;
+  margin: 10px;
+  padding: 15px;
+  font-size: 18px;
+}
+
+h2 {
+  font-size: 2.3em;
+  flex: 1;
+}
+
+.template{
+    text-transform: capitalize;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+:host.medium-approved{
+  border-color: green;
+}
+:host.medium-approved > h2 {
+  color: green;
+}
+:host.medium-rejected {
+  border-color: red;
+}
+:host.medium-rejected > h2 {
+  color: red;
+}
+:host {
+  border-color: blue;
+}
+:host h2 {
+  color: blue;
+}
+
+.btn-group{
+    margin-top: 8px;
+}
+
+.favorite{
+  width: 24px;
+  height: 24px;
+  fill: #bdc2c5;
+}
+.favorite.is-favorite {
+    fill: #37ad79;
+}
+.favorite.is-favorite-hovering {
+    fill: #45bf94;
+}
+.favorite.is-favorite.is-favorite-hovering {
+    fill: #ec4342;
+}
+
+.delete{
+  display: block;
+  background-color: #ec4342;
+  font-size: 20px;
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.approve{
+  display: block;
+  background-color: green;
+  font-size: 20px;
+  border-radius: 4px;
+  color: #ffffff;
+  text-decoration: none;
+}
+.pending{
+  display: block;
+  background-color: blue;
+  font-size: 20px;
+  border-radius: 4px;
+  color: #ffffff;
+  text-decoration: none;
+}

@@ -1,8 +1,4 @@
-<h1>working</h1>
-<ul *ngFor="let proposal of proposalsArray">
-  <li>{{proposal.title}}</li>
-  <li>{{proposal.uid}}</li>
-    <ul *ngFor="let file of proposal.files">
-      <li><a href="{{file.fileURL}}" target="_self">{{file.fileName}}</a></li>
-    </ul>
-</ul>
+<app-review-proposal-object
+  *ngFor="let proposal of proposalsArray"
+  [proposal]="proposal"
+  ></app-review-proposal-object>

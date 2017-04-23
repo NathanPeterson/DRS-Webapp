@@ -36,7 +36,8 @@ export class ProposalPendingComponent implements OnInit {
           files.forEach(file=>{
             currentFiles[i] ={
               fileName: file.fileName,
-              fileURL: file.url
+              fileURL: file.url,
+              pdf: file.pdf
             };
             i++;
             console.log(currentFiles)

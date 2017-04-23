@@ -30,6 +30,8 @@ import { ProposalDomainService } from './services/proposal-domain.service'
 
 import { CarouselModule} from 'ng2-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { PdfViewerComponent } from 'ng2-pdf-viewer';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { MyEventPageComponent } from './my-event-page/my-event-page.component';
 import { ReviewAppComponent } from './review-app/review-app.component';
@@ -45,6 +47,7 @@ import { ApplicationComponent } from './admin-portal/reviewer-apps/application.c
 
 import { ReviewerPortalComponent } from './reviewer-portal/reviewer-portal.component';
 import { ProposalPendingComponent } from './reviewer-portal/proposal-pending/proposal-pending.component';
+import { ReviewProposalObjectComponent } from './reviewer-portal/review-proposal-object/review-proposal-object.component';
 
 const authConfig = {
     provider: AuthProviders.Password,
@@ -73,6 +76,9 @@ const authConfig = {
     ApplicationComponent,
     ReviewerPortalComponent,
     ProposalPendingComponent,
+    ReviewProposalObjectComponent,
+    PdfViewerComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -83,6 +89,7 @@ const authConfig = {
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
     CarouselModule.forRoot(),
     BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   providers: [
     InstitutionService,
