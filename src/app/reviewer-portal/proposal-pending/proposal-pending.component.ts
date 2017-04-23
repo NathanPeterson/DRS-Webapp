@@ -40,7 +40,6 @@ export class ProposalPendingComponent implements OnInit {
               pdf: file.pdf
             };
             i++;
-            console.log(currentFiles)
           });
         });
 
@@ -51,7 +50,6 @@ export class ProposalPendingComponent implements OnInit {
         });
 
       });
-      console.log(this.proposalsArray)
     });
   }
 

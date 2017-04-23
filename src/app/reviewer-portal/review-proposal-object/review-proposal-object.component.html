@@ -1,10 +1,11 @@
 <h2>{{ proposal.title }}</h2>
 <h4><p class="template">{{proposal.uid}}</h4>
 <div class="template" *ngFor="let file of proposal.files">
-  <a href="{{file.fileURL}}" target="_blank">{{file.fileName}}</a>
+
+  <!-- <a href="{{file.fileURL}}" target="_blank">{{file.fileName}}</a> -->
+
   <div *ngIf="file.pdf">
     <button class="btn btn-primary" (click)="lgModal.show()">{{file.fileName}}</button>
-
     <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="document" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -15,16 +16,21 @@
             </button>
           </div>
           <div class="modal-body">
-            <iframe [src]="url(file)" width="100%" height="500" style="height: 85vh;"></iframe>
+            <iframe [src]="url(file)" width="100%" height="500" style="height: 85vh;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             <!-- <iframe type="application/pdf" data="{{file.fileURL}}" width="100%" height="500" style="height: 85vh;">No Support</iframe> -->
           </div>
         </div>
       </div>
     </div>
-  <!-- <div *ngIf="file.pdf">
-    <pdf-viewer [src]="file.fileURL"></pdf-viewer>
-  </div> -->
   </div>
+</div>
+<div class="btn-group" dropdown>
+  <button dropdownToggle type="button" class="btn btn-info dropdown-toggle">
+    Download Files<span class="caret"></span>
+  </button>
+  <ul *dropdownMenu class="dropdown-menu" role="menu">
+    <li *ngFor="let downloadFile of proposal.files" role="menuitem"><a href="{{downloadFile.fileURL}}" download>{{downloadFile.fileName}}</a></li>
+  </ul>
 </div>
 <div class="btn-group" role="group">
   <!-- <button type="button" name="button" class="btn btn-default delete" (click)="reject(application)">Reject</button>
