@@ -11,6 +11,7 @@ export class ProposalPendingComponent implements OnInit {
   authState;
   files;
   proposalsArray;
+  fileCount;
 
   constructor(private af: AngularFire,
               private router: Router,) {
@@ -58,7 +59,6 @@ export class ProposalPendingComponent implements OnInit {
       });
     });
   }
-
 
   isReviewer(data){
     return data.accountType === 'reviewer';

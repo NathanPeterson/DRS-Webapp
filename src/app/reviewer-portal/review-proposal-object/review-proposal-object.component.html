@@ -1,6 +1,6 @@
 <header>
   <h2>{{ proposal.title }}</h2>
-  <span class="resetCounter">Reseted {{proposal.resetCount}} times</span>
+  <span *ngIf="proposal.resetCount" class="resetCounter">Reseted {{proposal.resetCount}} times</span>
   <h4><p class="template">{{proposal.uid}}</h4>
 
 </header>
@@ -50,14 +50,18 @@
     </div>
   </div>
 
-  <div *ngIf="proposal.status === 'pending...'" class="currentRatio">
-    <span class="rejected">{{proposal.rejectCount}}</span> / <span class="approved">{{proposal.approveCount}}</span>
+  <div *ngIf="proposal.status === 'pending...'" class="currentRatio" popoverTitle="Current Ratio"
+        popover="First to 3 decides whether it gets accepted or not. Red = Rejected / Green = Appoved" triggers="mouseenter:mouseleave">
+    <span class="rejected">{{proposal.rejectCount}}</span>
+    /
+    <span class="approved">{{proposal.approveCount}}</span>
   </div>
 
   <div class="btn-group action-btns" role="group">
     <button *ngIf="proposal.status === 'pending...'" type="button" name="button" class="btn btn-default delete" (click)="reject(proposal)">Reject</button>
     <button *ngIf="currentUser === 'admin' || currentUser === 'owner'" type="button" name="button" class="btn btn-default pending"
-            (click)="pending(proposal)">Pending...</button>
+            (click)="pending(proposal)" popoverTitle="Reset Proposal" popover="Resets Proposal to 'pending...' and sets ratio counters to 0"
+            triggers="mouseenter:mouseleave">Reset Prop</button>
     <button *ngIf="proposal.status === 'pending...'" type="button" name="button" class="btn btn-default approve" (click)="approve(proposal)">Approve</button>
   </div>
 </footer>

@@ -14,7 +14,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class ReviewProposalObjectComponent{
   authState;
   currentUser;
-  typeRestricted=true;
+  currentProposal;
   @Input() proposal;
 
   constructor(private af: AngularFire,
@@ -25,6 +25,9 @@ export class ReviewProposalObjectComponent{
    });
    let currentUser = this.af.database.object('/users/' + this.authState.uid +'/accountType');
    currentUser.subscribe(user=> this.currentUser = user.$value);
+  }
+
+  ngOnInit(){
   }
 
   url(data) {
@@ -45,7 +48,6 @@ export class ReviewProposalObjectComponent{
   public onHidden():void {
     this.isModalShown = false;
   }
-
 
   approve(data){
     let approveCount = this.af.database.object('/proposals/' + data.title + '/approveCount', {
