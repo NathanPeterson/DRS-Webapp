@@ -1,10 +1,17 @@
-<h2>{{ application.username }}</h2>
-<h4><p class="template">Full Name: </p>{{application.fname}} {{application.lname}}</h4>
-<div><p class="template">Answer to Question 1: </p>{{application.highdegree}}</div>
-<div><p class="template">Answer to Question 2: </p>{{application.likability}}</div>
-<div><p class="template">Answer to Question 3: </p>{{application.pickout}}</div>
-<div class="btn-group" role="group">
-  <button type="button" name="button" class="btn btn-default delete" (click)="reject(application)">Reject</button>
-  <button type="button" name="button" class="btn btn-default pending" (click)="pending(application)">Pending...</button>
-  <button type="button" name="button" class="btn btn-default approve" (click)="approve(application)">Approve</button>
-</div>
+<header>
+  <h2>{{ application.username }}</h2>
+  <h4><span class="template">Full Name: </span>{{application.fname}} {{application.lname}}</h4>
+</header>
+<body>
+  <div><p class="template">Answer to Question 1: </p>{{application.highdegree}}</div>
+  <div><p class="template">Answer to Question 2: </p>{{application.likability}}</div>
+  <div><p class="template">Answer to Question 3: </p>{{application.pickout}}</div>
+
+</body>
+<footer>
+  <div class="btn-group" role="group">
+    <button type="button" name="button" class="btn btn-default delete" (click)="reject(application)">Reject</button>
+    <button type="button" name="button" class="btn btn-default pending" (click)="pending(application)">Pending...</button>
+    <button type="button" name="button" class="btn btn-default approve" (click)="approve(application)">Approve</button>
+  </div>
+</footer>
