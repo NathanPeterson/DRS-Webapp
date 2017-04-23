@@ -47,9 +47,15 @@
       </ul>
     </div>
   </div>
+
+  <div *ngIf="proposal.status === 'pending...'" class="currentRatio">
+    <span class="rejected">2</span> / <span class="approved">1</span>
+  </div>
+
   <div *ngIf="proposal.status === 'pending...'"  class="btn-group action-btns" role="group">
     <button type="button" name="button" class="btn btn-default delete" (click)="reject(proposal)">Reject</button>
-    <button type="button" name="button" class="btn btn-default pending" (click)="pending(proposal)">Pending...</button>
+    <button *ngIf="currentUser === 'admin' || currentUser === 'owner'" type="button" name="button" class="btn btn-default pending"
+            (click)="pending(proposal)">Pending...</button>
     <button type="button" name="button" class="btn btn-default approve" (click)="approve(proposal)">Approve</button>
   </div>
 </footer>

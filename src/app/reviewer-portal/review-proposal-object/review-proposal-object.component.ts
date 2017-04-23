@@ -13,6 +13,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 
 export class ReviewProposalObjectComponent{
   authState;
+  currentUser;
   typeRestricted=true;
   @Input() proposal;
 
@@ -22,6 +23,8 @@ export class ReviewProposalObjectComponent{
     this.af.auth.subscribe((auth) => {
      this.authState = auth;
    });
+   let currentUser = this.af.database.object('/users/' + this.authState.uid +'/accountType');
+   currentUser.subscribe(user=> this.currentUser = user.$value);
   }
 
   url(data) {
@@ -74,13 +77,6 @@ export class ReviewProposalObjectComponent{
 
   reject(data){
     this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'rejected'});
-    // this.af.database.object('/proposals/' + data.title,{
-    //   query:{
-    //     orderByChild: 'owner',
-    //     equalTo: data.uid,
-    //   }
-    // }).update({status: 'rejected'});
-
     let rejectCount = this.af.database.object('/proposals/' + data.title + '/rejectCount', {
       query:{
       orderByChild: 'owner',
