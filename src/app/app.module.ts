@@ -27,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { InstitutionService } from './services/institution.service'
 import { StatesService } from './services/states.service'
 import { ProposalDomainService } from './services/proposal-domain.service'
+import { TotalProposalsService } from './services/total-proposals.service'
 
 import { CarouselModule} from 'ng2-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap';
@@ -99,6 +100,7 @@ const authConfig = {
     StatesService,
     ProposalDomainService,
     UploadFilesService,
+    TotalProposalsService,
   ],
   bootstrap: [AppComponent]
 })

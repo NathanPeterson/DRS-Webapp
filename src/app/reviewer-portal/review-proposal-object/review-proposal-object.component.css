@@ -24,7 +24,6 @@
   margin-top: 83px;
   /* Margin bottom by footer height */
   margin-bottom: 105px;
-  overflow-y: scroll;
 }
 :host > footer {
   position: absolute;
@@ -51,13 +50,13 @@ h2 {
 :host.medium-approved{
   border-color: green;
 }
-:host.medium-approved > h2 {
+:host.medium-approved > header > h2 {
   color: green;
 }
 :host.medium-rejected {
   border-color: red;
 }
-:host.medium-rejected > h2 {
+:host.medium-rejected > header > h2 {
   color: red;
 }
 :host {

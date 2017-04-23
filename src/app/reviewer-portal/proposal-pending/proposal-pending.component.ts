@@ -12,7 +12,8 @@ export class ProposalPendingComponent implements OnInit {
   files;
   proposalsArray;
 
-  constructor(private af: AngularFire,private router: Router) {
+  constructor(private af: AngularFire,
+              private router: Router,) {
     this.af.auth.subscribe((auth) => {
      this.authState = auth;
     });
@@ -51,7 +52,6 @@ export class ProposalPendingComponent implements OnInit {
           status: proposal.status,
           files: currentFiles,
         });
-
       });
     });
   }
