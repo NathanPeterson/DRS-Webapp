@@ -4,8 +4,10 @@
   <label for="pageList" class="nav-header">Pages</label>
   <a *ngIf="currentUserType === 'owner' || currentUserType === 'admin'" [routerLink] = "['/admin-portal']" routerLinkActive="['active']">Admin Portal Home</a>
   <a [routerLink] = "['/reviewer-portal']" routerLinkActive="['active']" (click)="setHomeTrue()">Reviewer Portal Home</a>
-  <a [routerLink] = "['/reviewer-portal/proposal-pending']" routerLinkActive="['active']" (click)="setHomeFalse()">Proposals Pending</a>
-  <a [routerLink] = "['/reviewer-portal/proposal-approved']" routerLinkActive="['active']" (click)="setHomeFalse()">Proposals Approved</a>
+  <label for="pageList" class="nav-header">Proposals</label>
+  <a [routerLink] = "['/reviewer-portal/proposal-approved']" routerLinkActive="['active']" (click)="setHomeFalse()">Approved</a>
+  <a [routerLink] = "['/reviewer-portal/proposal-pending']" routerLinkActive="['active']" (click)="setHomeFalse()">Pending</a>
+  <a [routerLink] = "['/reviewer-portal/proposal-rejected']" routerLinkActive="['active']" (click)="setHomeFalse()">Rejected</a>
 </div>
 
 <button type="button" class="btn btn-primary open-nav-btn" (click)="show()" style="position: fixed;">open nav <span class="glyphicon glyphicon-triangle-right"></span></button>

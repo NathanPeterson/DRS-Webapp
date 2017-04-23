@@ -48,6 +48,7 @@ import { ApplicationComponent } from './admin-portal/reviewer-apps/application.c
 import { ReviewerPortalComponent } from './reviewer-portal/reviewer-portal.component';
 import { ProposalPendingComponent } from './reviewer-portal/proposal-pending/proposal-pending.component';
 import { ProposalApprovedComponent } from './reviewer-portal/proposal-approved/proposal-approved.component';
+import { ProposalRejectedComponent } from './reviewer-portal/proposal-rejected/proposal-rejected.component';
 import { ReviewProposalObjectComponent } from './reviewer-portal/review-proposal-object/review-proposal-object.component';
 
 const authConfig = {
@@ -79,7 +80,7 @@ const authConfig = {
     ProposalPendingComponent,
     ReviewProposalObjectComponent,
     ProposalApprovedComponent,
-    PdfViewerComponent,
+    ProposalRejectedComponent,
 
   ],
   imports: [
