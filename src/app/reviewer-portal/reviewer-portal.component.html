@@ -10,7 +10,7 @@
   <a [routerLink] = "['/reviewer-portal/proposal-rejected']" routerLinkActive="['active']" (click)="setHomeFalse()">Rejected <span class="badge">{{total.getRejected()}}</span></a>
 </div>
 
-<button type="button" class="btn btn-primary open-nav-btn" (click)="show()" style="position: fixed;">open nav <span class="glyphicon glyphicon-triangle-right"></span></button>
+<button type="button" class="btn btn-primary open-nav-btn" (click)="show()" style="position: fixed; z-index: 99999;">open nav <span class="glyphicon glyphicon-triangle-right"></span></button>
 
 <div [ngClass]="{'main-show': showSidebar === true ,
                  'main-hide': showSidebar === false}">
