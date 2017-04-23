@@ -1,55 +1,55 @@
-<h2>{{ proposal.title }}</h2>
-<h4><p class="template">{{proposal.uid}}</h4>
-<div class="template" *ngFor="let file of proposal.files">
-  <div *ngIf="file.fileName.split('.').pop() === 'pdf'">
-    <button type="button" class="btn btn-primary" (click)="showModal()">{{file.fileName}}</button>
-      <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()"
-        bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="application/pdf" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title pull-left">{{file.fileName}}</h4>
-              <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
-               <span aria-hidden="true">&times;</span>
-             </button>
-            </div>
-            <div class="modal-body">
-              <iframe type="application/pdf" [src]="url(file)" width="100%" height="500" style="height: 85vh;"
-                      webkitallowfullscreen mozallowfullscreen allowfullscreen>No Support</iframe>
+<header>
+  <h2>{{ proposal.title }}</h2>
+  <h4><p class="template">{{proposal.uid}}</h4>
+</header>
+<body>
+  <div class="template" *ngFor="let file of proposal.files">
+    <div *ngIf="file.fileName.split('.').pop() === 'pdf'">
+      <button type="button" class="btn btn-primary" (click)="showModal()">{{file.fileName}}</button>
+        <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()"
+          bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="application/pdf" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title pull-left">{{file.fileName}}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+              </div>
+              <div class="modal-body">
+                <iframe type="application/pdf" [src]="url(file)" width="100%" height="500" style="height: 85vh;"
+                        webkitallowfullscreen mozallowfullscreen allowfullscreen>No Support</iframe>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+    </div>
   </div>
-</div>
-
-
-
-<div class="btn-group" role="group">
-  <div class="btn-group" dropdown>
-    <button dropdownToggle type="button" class="btn btn-default dropdown-toggle">
-      Open File<span class="caret"></span>
-    </button>
-    <ul *dropdownMenu class="dropdown-menu" role="menu">
-      <li *ngFor="let file of proposal.files" role="menuitem" >
-        <a href="{{file.fileURL}}" target="_blank">{{file.fileName}}</a>
-      </li>
-    </ul>
+</body>
+<footer class="footer">
+  <div class="btn-group" role="group">
+    <div class="btn-group" dropdown>
+      <button dropdownToggle type="button" class="btn btn-default dropdown-toggle">
+        Open File<span class="caret"></span>
+      </button>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <li *ngFor="let file of proposal.files" role="menuitem" >
+          <a href="{{file.fileURL}}" target="_blank">{{file.fileName}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="btn-group" dropdown>
+      <button dropdownToggle type="button" class="btn btn-info dropdown-toggle">
+        Download Files<span class="caret"></span>
+      </button>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <li *ngFor="let downloadFile of proposal.files" role="menuitem"><a href="{{downloadFile.fileURL}}" download>{{downloadFile.fileName}}</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="btn-group" dropdown>
-    <button dropdownToggle type="button" class="btn btn-info dropdown-toggle">
-      Download Files<span class="caret"></span>
-    </button>
-    <ul *dropdownMenu class="dropdown-menu" role="menu">
-      <li *ngFor="let downloadFile of proposal.files" role="menuitem"><a href="{{downloadFile.fileURL}}" download>{{downloadFile.fileName}}</a></li>
-    </ul>
+  <div *ngIf="proposal.status === 'pending...'"  class="btn-group action-btns" role="group">
+    <button type="button" name="button" class="btn btn-default delete" (click)="reject(proposal)">Reject</button>
+    <button type="button" name="button" class="btn btn-default pending" (click)="pending(proposal)">Pending...</button>
+    <button type="button" name="button" class="btn btn-default approve" (click)="approve(proposal)">Approve</button>
   </div>
-</div>
-
-
-
-<div *ngIf="proposal.status === 'pending...'"  class="btn-group" role="group">
-  <button type="button" name="button" class="btn btn-default delete" (click)="reject(proposal)">Reject</button>
-  <button type="button" name="button" class="btn btn-default pending" (click)="pending(proposal)">Pending...</button>
-  <button type="button" name="button" class="btn btn-default approve" (click)="approve(proposal)">Approve</button>
-</div>
+</footer>
