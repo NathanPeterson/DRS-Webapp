@@ -19,13 +19,13 @@ export class HomeComponent{
   }
 
   ngAfterViewInit(){
-    $(document).ready(function(){
-      $('.my-countdown').countdown({
-        until:$.countdown.UTCDate(
-          -5,2017,4,28,18,0,0
-        )
-      });
-    });
+    // $(document).ready(function(){
+    //   $('.my-countdown').countdown({
+    //     until:$.countdown.UTCDate(
+    //       -5,2017,4,28,18,0,0
+    //     )
+    //   });
+    // });
   }
 
 }
