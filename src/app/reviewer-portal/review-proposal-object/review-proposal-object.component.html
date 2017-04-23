@@ -45,7 +45,10 @@
     </ul>
   </div>
 </div>
-<div class="btn-group" role="group">
+
+
+
+<div *ngIf="proposal.status === 'pending...'"  class="btn-group" role="group">
   <button type="button" name="button" class="btn btn-default delete" (click)="reject(proposal)">Reject</button>
   <button type="button" name="button" class="btn btn-default pending" (click)="pending(proposal)">Pending...</button>
   <button type="button" name="button" class="btn btn-default approve" (click)="approve(proposal)">Approve</button>

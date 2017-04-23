@@ -106,6 +106,8 @@ export class RegisterComponent implements OnInit {
         special: data.special,
         diet: data.diet,
 
+        accountType: 'standard'
+
       })
     ).then(()=>{
       this.af.auth.getAuth().auth.sendEmailVerification();
