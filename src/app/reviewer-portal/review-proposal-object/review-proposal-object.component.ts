@@ -1,8 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild} from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AngularFire,} from 'angularfire2';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SecurityContext } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-review-proposal-object',
@@ -27,4 +28,18 @@ export class ReviewProposalObjectComponent{
       return this._sanitizer.bypassSecurityTrustResourceUrl(data.fileURL);
   }
 
+  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+  public isModalShown:boolean = false;
+
+  public showModal():void {
+    this.isModalShown = true;
+  }
+
+  public hideModal():void {
+    this.autoShownModal.hide();
+  }
+
+  public onHidden():void {
+    this.isModalShown = false;
+  }
 }
