@@ -45,30 +45,92 @@ export class ReviewProposalObjectComponent{
 
 
   approve(data){
-    this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'approved'});
-    this.af.database.object('/proposals/' + data.title,{
+    let approveCount = this.af.database.object('/proposals/' + data.title + '/approveCount', {
       query:{
-        orderByChild: 'owner',
-        equalTo: data.uid,
+      orderByChild: 'owner',
+      equalTo: data.uid,
       }
-    }).update({status: 'approved'});
+    });
+    approveCount.$ref.transaction(count=>{
+      if (count === null) {
+           return count = 1;
+       } else {
+           return count + 1;
+       }
+    }).then(()=>{
+      approveCount.subscribe(count =>{
+        if(count.$value >= 3){
+          this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'approved'});
+          this.af.database.object('/proposals/' + data.title,{
+            query:{
+              orderByChild: 'owner',
+              equalTo: data.uid,
+            }
+          }).update({status: 'approved'});
+        }
+      });
+    });
   }
+
   reject(data){
     this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'rejected'});
-    this.af.database.object('/proposals/' + data.title,{
+    // this.af.database.object('/proposals/' + data.title,{
+    //   query:{
+    //     orderByChild: 'owner',
+    //     equalTo: data.uid,
+    //   }
+    // }).update({status: 'rejected'});
+
+    let rejectCount = this.af.database.object('/proposals/' + data.title + '/rejectCount', {
       query:{
-        orderByChild: 'owner',
-        equalTo: data.uid,
+      orderByChild: 'owner',
+      equalTo: data.uid,
       }
-    }).update({status: 'rejected'});
+    });
+    rejectCount.$ref.transaction(count=>{
+      if (count === null) {
+           return count = 1;
+       } else {
+           return count + 1;
+       }
+    }).then(()=>{
+      rejectCount.subscribe(count =>{
+        if(count.$value >= 3){
+          this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'rejected'});
+          this.af.database.object('/proposals/' + data.title,{
+            query:{
+              orderByChild: 'owner',
+              equalTo: data.uid,
+            }
+          }).update({status: 'rejected'});
+        }
+      });
+    });
   }
   pending(data){
     this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'pending...'});
-    this.af.database.object('/proposals/' + data.title,{
+    let reset = this.af.database.object('/proposals/' + data.title,{
       query:{
         orderByChild: 'owner',
         equalTo: data.uid,
       }
-    }).update({status: 'pending...'});
+    });
+    reset.update({status: 'pending...'});
+    reset.update({approveCount: 0});
+    reset.update({rejectCount: 0});
+
+    let resetCount = this.af.database.object('/proposals/' + data.title + '/resetCount',{
+      query:{
+        orderByChild: 'owner',
+        equalTo: data.uid,
+      }
+    });
+    resetCount.$ref.transaction(count=>{
+      if (count === null) {
+           return count = 1;
+       } else {
+           return count + 1;
+       }
+     })
   }
 }
