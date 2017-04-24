@@ -78,7 +78,6 @@ export class ReviewProposalObjectComponent{
   }
 
   reject(data){
-    this.af.database.object('/users/' + data.uid + '/proposals/' + data.title).update({status: 'rejected'});
     let rejectCount = this.af.database.object('/proposals/' + data.title + '/rejectCount', {
       query:{
       orderByChild: 'owner',

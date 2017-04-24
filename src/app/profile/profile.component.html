@@ -1,3 +1,66 @@
-<p>
-  profile works!
-</p>
+<button type="button" class="btn-lg btn-warning"name="button" (click)="loadUser()">User Profile</button>
+<div *ngIf="currentUser" class="wrapper">
+  <span class="info"><span class = "bold">Name: </span>{{currentUser.firstName}} {{mi}} {{currentUser.lastName}}</span>
+  <span class="info"><span class = "bold">Username: </span>{{currentUser.username}} </span>
+  <span class="info"><span class = "bold">AccountType: </span><span style="color: gold">{{currentUser.accountType}}</span></span>
+  <br>
+  <span class="info"><span class = "bold">School: </span><span>{{currentUser.university}}</span></span>
+  <span class="info"><span class = "bold">Department: </span><span>{{currentUser.department}}</span></span>
+  <span class="info"><span class = "bold">Discipline: </span><span>{{currentUser.discipline}}</span></span>
+  <span class="info"><span class = "bold">Subdiscipline: </span><span>{{currentUser.subdiscipline}}</span></span>
+  <br>
+  <br>
+  <h2 class="sub-header"><span class = "bold">Applications</span></h2>
+  <div class="container">
+    <accordion>
+      <accordion-group #group [isOpen]="status.isOpen">
+        <div accordion-heading>
+          Proposals Status
+          <i class="pull-right float-xs-right glyphicon"
+             [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-striped custome">
+            <thead>
+              <th>Title</th>
+              <th>Domain</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let proposal of proposalList">
+                <td>{{proposal.$key}}</td>
+                <td>{{proposal.proposalDomain}}</td>
+                <td [ngClass]="{'approved': proposal.status === 'approved' ,
+                               'rejected': proposal.status === 'rejected',
+                               'pending': proposal.status === 'pending...'}">{{proposal.status}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </accordion-group>
+      <accordion-group #group [isOpen]="status.isOpen">
+        <div accordion-heading>
+          Reviewer Status
+          <i class="pull-right float-xs-right glyphicon"
+             [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped custome">
+            <thead>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td [ngClass]="{'approved': application === 'approved' ,
+                               'rejected': application === 'rejected',
+                               'pending': application === 'pending...'}">{{application}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </accordion-group>
+    </accordion>
+  </div>
+
+</div>

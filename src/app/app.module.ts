@@ -34,6 +34,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 import { MyEventPageComponent } from './my-event-page/my-event-page.component';
 import { ReviewAppComponent } from './review-app/review-app.component';
@@ -99,6 +100,7 @@ const authConfig = {
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
+    AccordionModule.forRoot(),
   ],
   providers: [
     InstitutionService,

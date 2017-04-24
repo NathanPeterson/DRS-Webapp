@@ -1,0 +1,53 @@
+.info{
+  display: block;
+  text-align: left;
+  font-size: 30px;
+  font-weight: 200;
+  padding-top: 8px;
+}
+.bold{
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.wrapper{
+  position: relative;
+  margin-left: 10%;
+}
+
+.custome{
+  width: auto;
+}
+.container{
+  width: 100px !imporant;
+  margin-left: 0;
+  left: 0;
+}
+/*.custome:nth-child(odd){
+  background-color: red;
+}
+.custome:nth-child(even){
+  color:blue;
+  background-color: blue;
+}*/
+/*tr:hover{
+  background-color: gold;
+}
+tr:nth-child(odd):hover{
+    background-color: gold;
+}*/
+.approved{
+  background-color: limegreen;
+  font-size: 20px;
+  color: white;
+}
+.rejected{
+  background-color: crimson;
+  font-size: 20px;
+  color: white;
+}
+.pending{
+  background-color: blue;
+  font-size: 20px;
+  color: white;
+}
