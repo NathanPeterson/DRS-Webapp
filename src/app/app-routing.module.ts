@@ -19,6 +19,8 @@ import { ProposalPendingComponent } from './reviewer-portal/proposal-pending/pro
 import { ProposalApprovedComponent } from './reviewer-portal/proposal-approved/proposal-approved.component';
 import { ProposalRejectedComponent } from './reviewer-portal/proposal-rejected/proposal-rejected.component';
 
+import { ProfileComponent } from './profile/profile.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -52,6 +54,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   {
     path: 'proposal-app',
