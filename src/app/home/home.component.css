@@ -1,10 +1,11 @@
-#world-premiere{
+#main-page{
   font-size: 16px;
   width: 500px;
-  margin: 25px auto;
+  margin: 10% auto;
+  height: 300px;
   border: 1px solid rgba(255,255,255,.2);
 }
-#world-premiere h1{
+#main-page h1{
   font-size: 4.2em;
   color: black;
   text-transform: uppercase;
@@ -15,7 +16,7 @@
   text-align: center;
 }
 
-#world-premiere h2{
+#main-page h2{
   font-size: 1.5em;
   color: black;
   text-transform: uppercase;
@@ -27,7 +28,7 @@
   letter-spacing: 9px;
 }
 
-#world-premiere .my-countdown{
+#main-page .my-countdown{
   display: inline-block;
   text-align: center;
   font-size: 1.8em;
@@ -37,4 +38,12 @@ img{
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.wrapper{
+  height: 100%;
+  width: 100%;
+}
+.main-page {
+  align-items: stretch;
 }

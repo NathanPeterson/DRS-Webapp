@@ -1,16 +1,28 @@
+<div class="wrapper">
+  <div class="main-page">
+    <carousel [interval]="myInterval">
+      <slide>
+        <div id="main-page">
+          <div class="heading">
+            <h2>Time is Running out</h2>
+            <h1>Submit Your Proposals</h1>
+          </div>
+          <div class="my-countdown"></div>
+          <button type="button" class="btn btn-primary btn-lg btn-block"
+                  routerLink = "/proposal-app" routerLinkActive="active">Submit Proposal</button>
 
-<br><br><br>
-<div id="world-premiere">
-  <div class="heading">
-    <h2>Time is Running out</h2>
-    <h1>Submit Your Proposals</h1>
+          <button type="button" class="btn btn-info btn-lg btn-block"
+                routerLink = "/review-app" routerLinkActive="active">Become a Reviewer</button>
+        </div>
+      </slide>
+      <slide>
+        <div id="main-page">
+          <div class="heading">
+            <!-- <h2>Time is Running out</h2>
+            <h1>Submit Your Proposals</h1> -->
+          </div>
+        </div>
+      </slide>
+    </carousel>
   </div>
-  <div class="my-countdown"></div>
-  <br><br>
-  <button type="button" class="btn btn-primary btn-lg btn-block"
-          routerLink = "/proposal-app" routerLinkActive="active">Submit Proposal</button>
-
-<button type="button" class="btn btn-info btn-lg btn-block"
-        routerLink = "/review-app" routerLinkActive="active">Become a Reviewer</button>
-  <br><br><br><br>
 </div>
