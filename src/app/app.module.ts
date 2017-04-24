@@ -52,6 +52,7 @@ import { ProposalPendingComponent } from './reviewer-portal/proposal-pending/pro
 import { ProposalApprovedComponent } from './reviewer-portal/proposal-approved/proposal-approved.component';
 import { ProposalRejectedComponent } from './reviewer-portal/proposal-rejected/proposal-rejected.component';
 import { ReviewProposalObjectComponent } from './reviewer-portal/review-proposal-object/review-proposal-object.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const authConfig = {
     provider: AuthProviders.Password,
@@ -83,6 +84,7 @@ const authConfig = {
     ReviewProposalObjectComponent,
     ProposalApprovedComponent,
     ProposalRejectedComponent,
+    ProfileComponent,
 
   ],
   imports: [
