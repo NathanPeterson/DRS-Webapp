@@ -58,10 +58,10 @@
   </div>
 
   <div class="btn-group action-btns" role="group">
-    <button *ngIf="proposal.status === 'pending...'" type="button" name="button" class="btn btn-default delete" (click)="reject(proposal)">Reject</button>
-    <button *ngIf="currentUser === 'admin' || currentUser === 'owner'" type="button" name="button" class="btn btn-default pending"
+    <button *ngIf="proposal.status === 'pending...'" [disabled]="authState.uid === proposal.uid" type="button" name="button" class="btn btn-default delete" (click)="reject(proposal)">Reject</button>
+    <button *ngIf="currentUser === 'admin' || currentUser === 'owner'" [disabled]="authState.uid === proposal.uid" type="button" name="button" class="btn btn-default pending"
             (click)="pending(proposal)" popoverTitle="Reset Proposal" popover="Resets Proposal to 'pending...' and sets ratio counters to 0"
             triggers="mouseenter:mouseleave">Reset Prop</button>
-    <button *ngIf="proposal.status === 'pending...'" type="button" name="button" class="btn btn-default approve" (click)="approve(proposal)">Approve</button>
+    <button *ngIf="proposal.status === 'pending...'" [disabled]="authState.uid === proposal.uid"  type="button" name="button" class="btn btn-default approve" (click)="approve(proposal)">Approve</button>
   </div>
 </footer>
