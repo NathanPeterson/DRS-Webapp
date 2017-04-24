@@ -11,7 +11,7 @@ declare var $: any;
 })
 export class HomeComponent{
   public authState;
-  public myInterval: number = 5000;
+  public myInterval: number = 15000;
 
   constructor(private _elRef: ElementRef, public af: AngularFire) {
     this.af.auth.subscribe((auth) => {

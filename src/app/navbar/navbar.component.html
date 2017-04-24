@@ -36,10 +36,44 @@
       </div>
       <div *ngIf="!authState">
         <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink = "/login" routerLinkActive="active">Login</a></li>
+        <li>
+          <!-- <a routerLink = "/login" routerLinkActive="active">Login</a> -->
+          <button type="button" class="btn btn-primary" (click)="showModal()" style="margin-top: 8px;">login</button>
+
+
+
+
+        </li>
         <li><a routerLink = "/register" routerLinkActive="active">Register</a></li>
         </ul>
       </div>
     </div><!--/.nav-collapse -->
   </div>
 </nav>
+
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()"
+  bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="form" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Login</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+         <span aria-hidden="true">&times;</span>
+       </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="submit()" *ngIf="!authState" class="loginForm">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="model.email" />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="model.password" />
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
