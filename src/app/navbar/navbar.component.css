@@ -11,3 +11,21 @@ img{
   border-top: 50%;
   transform: scale(3.5, 4);
 }
+
+.button-blend{
+  background:none!important;
+  color:inherit;
+  border:none;
+  font: inherit;
+  cursor: pointer;
+  opacity: .7;
+}
+
+.button-blend:hover{
+  opacity: 1;
+  color: black;
+}
+.button-blend:focus{
+    opacity: 1;
+    color: black;
+}

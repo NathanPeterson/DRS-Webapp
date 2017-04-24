@@ -31,7 +31,29 @@
       </ul>
       <div *ngIf="authState">
         <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink = "/home" routerLinkActive="active" (click)="logout()">{{ authState.auth.email }} (Logout)</a></li>
+          <li>
+
+
+
+
+            <div class="btn-group" dropdown>
+              <button type="button" class="btn btn-danger button-blend"routerLink = "/about" routerLinkActive="active"
+                      style="margin-top: 8px;">{{ authState.auth.email }}</button>
+              <button type="button" style="margin-top: 8px;" dropdownToggle class="btn btn-danger dropdown-toggle dropdown-toggle-split button-blend">
+                <span class="caret"></span>
+                <span class="sr-only">Split button!</span>
+              </button>
+              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li role="menuitem"><a class="dropdown-item"  routerLink = "/about" routerLinkActive="active">Profile</a></li>
+                <li class="divider dropdown-divider"></li>
+                <li role="menuitem"><a class="dropdown-item" routerLink = "/home" routerLinkActive="active" (click)="logout()">Logout</a></li>
+              </ul>
+            </div>
+
+
+
+
+          </li>
         </ul>
       </div>
       <div *ngIf="!authState">
@@ -39,10 +61,6 @@
         <li>
           <!-- <a routerLink = "/login" routerLinkActive="active">Login</a> -->
           <button type="button" class="btn btn-primary" (click)="showModal()" style="margin-top: 8px;">login</button>
-
-
-
-
         </li>
         <li><a routerLink = "/register" routerLinkActive="active">Register</a></li>
         </ul>
