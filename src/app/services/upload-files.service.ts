@@ -10,6 +10,7 @@ export class UploadFilesService {
   private IMAGES_FOLDER: string = 'images';
   private FOLDER_NAME: string;
   private PROPOSAL_TITLE: string;
+  private FULLNAME: string;
   private authState;
   private fileName;
 
@@ -27,10 +28,11 @@ export class UploadFilesService {
     });
   }
 
-  uploadFilesToFirebase(files: Array<FileItem[]>, folderName: string, proposalTitle: string) {
+  uploadFilesToFirebase(files: Array<FileItem[]>, folderName: string, proposalTitle: string, fullName: string) {
     let storageRef = firebase.storage().ref();
     this.FOLDER_NAME = folderName;
     this.PROPOSAL_TITLE = proposalTitle;
+    this.FULLNAME = fullName;
 
     _.each(files, (item:FileItem) => {
 
@@ -55,7 +57,7 @@ export class UploadFilesService {
  }
 
  private saveFile(image:any) {
-   this.af.database.list(`/${this.FOLDER_NAME}/`).update(this.PROPOSAL_TITLE, {owner: this.authState.uid});
+   this.af.database.list(`/${this.FOLDER_NAME}/`).update(this.PROPOSAL_TITLE, {owner: this.authState.uid, approveCount: 0, rejectCount: 0, status: 'pending...', fullName: this.FULLNAME});
    this.af.database.list(`/${this.FOLDER_NAME}/` + this.PROPOSAL_TITLE + /files/).update(this.fileName, image);
    this.af.database.list(`/users/`+ this.authState.uid  +`/proposals/` + this.PROPOSAL_TITLE + `/files/`).update( this.fileName, { proposalURL: image.url, proposalFile: image.fileName });
  }

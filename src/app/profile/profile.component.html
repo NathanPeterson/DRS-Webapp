@@ -33,7 +33,8 @@
                 <td>{{proposal.proposalDomain}}</td>
                 <td [ngClass]="{'approved': proposal.status === 'approved' ,
                                'rejected': proposal.status === 'rejected',
-                               'pending': proposal.status === 'pending...'}">{{proposal.status}}</td>
+                               'pending': proposal.status === 'pending...',
+                               'idle': proposal.status === 'idle'}">{{proposal.status}}</td>
               </tr>
             </tbody>
           </table>

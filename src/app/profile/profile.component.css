@@ -51,3 +51,8 @@ tr:nth-child(odd):hover{
   font-size: 20px;
   color: white;
 }
+.idle{
+  background-color: gold;
+  font-size: 20px;
+  color: white;
+}
