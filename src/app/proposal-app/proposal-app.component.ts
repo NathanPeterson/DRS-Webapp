@@ -58,7 +58,7 @@ export class ProposalAppComponent {
       discipline: data.discipline,
       subdiscipline: data.subdiscipline,
     }).then(() =>
-      this.uploadFilesService.uploadFilesToFirebase(this.files, "proposals", data.propTitle, data.fname + ' ' + data.mi + ' ' + data.lanme)
+      this.uploadFilesService.uploadFilesToFirebase(this.files, "proposals", data.propTitle, data.fname + ' ' + data.mi + ' ' + data.lname)
     ).then(() => {
       this.af.database.list(`/users/` + this.currentUser + `/proposals/`).update(data.propTitle, {
         proposalTitle: data.propTitle,

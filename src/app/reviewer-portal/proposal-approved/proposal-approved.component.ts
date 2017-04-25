@@ -48,6 +48,7 @@ export class ProposalApprovedComponent implements OnInit {
         this.proposalsArray.push({
           title: proposal.$key,
           uid: proposal.owner,
+          fullName: proposal.fullName,
           status: proposal.status,
           files: currentFiles,
         });
