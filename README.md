@@ -3,7 +3,7 @@
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
 
 
-##Documentation
+## Documentation
 Check out the documentation for this project here: https://github.com/NathanPeterson/DRS-Webapp/blob/master/DRS-Documentation.pdf
 
 ## Development server
